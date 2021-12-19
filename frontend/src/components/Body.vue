@@ -4,7 +4,36 @@
 
   <h2 class="posts">Tous les posts</h2>
 
+            <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse(-1)" :key="post.id">
     
+      <h1 class="titreBlogBox"><router-link class="titreBlog" :to="{name: 'post', params: { id: post.id }}"> {{ post.title }}</router-link></h1>
+          <router-link class="imgBlog" :to="{name: 'post', params: { id: post.id }}"> 
+        <!-- <div class="imgBlog"> -->
+    <!-- <div class="card aPost rounded card-white"> <h5><strong>{{ post.description1 }}</strong></h5><img class="img-contain" :src="post.imageUrl"></div> -->
+                               <div class="" v-for="comment in comments.slice().reverse()" :key="comment.id">
+                                 <div class="" v-if="post.id == comment.postId">                    
+                            <div class="">  
+                                  <!-- {{ comment.user.username }} -->
+                                  <!-- <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6> -->
+    <div class=""><img class="img-contain" :src="comment.imageUrl"></div>
+    </div>
+                                 </div>
+                               </div>
+                
+          <div class="conteneurImage">
+            <p class="resumeBlog">{{ post.description }}</p>
+            <p class="resumeBlog">{{ post.description2 }}</p>
+            <p class="resumeBlog">{{ post.description3 }}</p>
+            
+            
+            </div>
+            
+            
+      
+          <!-- </div> -->
+            </router-link>
+   
+   </div>
         <!-- <tr v-for="post in posts" :key="post._id">
          <td>{{ post.title }}</td>
          <td>{{ post.body }}</td>
@@ -13,20 +42,20 @@
         </tr> -->
     
    <!-- <div class="postsDB" v-for="post in posts.reverse()" :key="post._id"> -->
-   <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse()" :key="post.id">
+   <!-- <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse()" :key="post.id"> -->
     
-      <h1 class="titreBlogBox"><router-link class="titreBlog" :to="{name: 'post', params: { id: post.id }}"> {{ post.title }}</router-link></h1>
-          <router-link class="imgBlog" :to="{name: 'post', params: { id: post.id }}"> 
+      <!-- <h1 class="titreBlogBox"><router-link class="titreBlog" :to="{name: 'post', params: { id: post.id }}"> {{ post.title }}</router-link></h1> -->
+          <!-- <router-link class="imgBlog" :to="{name: 'post', params: { id: post.id }}">  -->
         <!-- <div class="imgBlog"> -->
     <!-- <div class="card aPost rounded card-white"> <h5><strong>{{ post.description1 }}</strong></h5><img class="img-contain" :src="post.imageUrl"></div> -->
-          <img :src="post.imageUrl" class="imageArticle">       
-          <div class="conteneurImage">
-            <p class="resumeBlog">{{ post.description }}</p></div>
+          <!-- <img :src="post.imageUrl" class="imageArticle">        -->
+          <!-- <div class="conteneurImage">
+            <p class="resumeBlog">{{ post.description }}</p></div> -->
       
           <!-- </div> -->
-            </router-link>
+            <!-- </router-link> -->
    
-   </div>
+   <!-- </div> -->
 
   
 </section>

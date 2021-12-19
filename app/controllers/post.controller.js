@@ -28,8 +28,8 @@ const Op = db.Sequelize.Op;
             ...postObject,
       
             //répertoire images
-            imageUrl: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}` : 'http://localhost:3000/images/icon.png',
-            imageUrl2: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}` : 'http://localhost:3000/images/icon2.png',
+            imageUrl: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}` : null,
+            // imageUrl2: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}` : 'http://localhost:3000/images/icon2.png',
             
           
         })

@@ -4,9 +4,9 @@ module.exports = (sequelize, Sequelize) => {
     imageUrl: { 
       type: Sequelize.STRING(99)
     },  
-    imageUrl2: { 
-      type: Sequelize.STRING(99)
-    },
+    // imageUrl2: { 
+    //   type: Sequelize.STRING(99)
+    // },
     title: {
       type: Sequelize.STRING(255)
     },

@@ -1,4 +1,3 @@
-
 <template>
 
   <div class="container-fluid">
@@ -12,15 +11,15 @@
                   <div class="form-group">
                     <label class="sr-only" for="message">post</label>
                       <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description1" autofocus  placeholder="What are you thinking?"/> -->
-                       <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.title" autofocus  placeholder="Titre du nouvel article"/>
+                       <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.title" autofocus  placeholder="Titre du nouvel article"/>
                         <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/>
                          <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description2" autofocus  placeholder="Titre du nouvel article"/>
                           <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description3" autofocus  placeholder="Titre du nouvel article"/>
                             <input  type="file" ref="file" @change="onSelect" class="" id="">
-                             <input  type="file" ref="file" @change="onSelect2" class="" id="">
+                             <input  type="file" ref="file" @change="onSelect2" class="" id=""> -->
                   <!-- </div> -->
-                   <button @click="savePost()" type="submit" class="btn btn-primary float-right" v-show="isHidden">Créer</button>
-                    <button @click="uploadImage"  type="submit" class="btn btn-success float-right">Upload</button> 
+                   <!-- <button @click="savePost()" type="submit" class="btn btn-primary float-right" v-show="isHidden">Créer</button>
+                    <button @click="uploadImage"  type="submit" class="btn btn-success float-right">Upload</button>  -->
 
                 <!-- </div> -->
                 <!-- <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab"> -->
@@ -40,7 +39,7 @@
         <img class="titi_img" src="" alt=""> 
 
         <h4 class="title-pos">Posts</h4></div>
-        <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse()" :key="post.id">
+        <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice(-1).reverse()" :key="post.id">
     
       <h1 class="titreBlogBox"><router-link class="titreBlog" :to="{name: 'post', params: { id: post.id }}"> {{ post.title }}</router-link></h1>
           <router-link class="imgBlog" :to="{name: 'post', params: { id: post.id }}"> 

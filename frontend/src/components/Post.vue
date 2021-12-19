@@ -22,25 +22,25 @@
                       <h6 class="text-muted time"> {{ currentPost.createdAt.slice(7,10).replace(/-/g,` `) }} {{ currentPost.createdAt.slice(5,7).replace(/-/g,` `) }} {{ currentPost.createdAt.slice(0,4).replace(/-/g,`.`) }} {{currentPost.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
                     </div>
                   </div>                                          <!-- shown if not editing -->
-                  <div class="kl card aPost rounded card-white" v-if="!editing"> 
+                  <!-- <div class="kl card aPost rounded card-white" v-if="!editing">  -->
                                                                    <!-- get post selected -->
-                    <h5 class="postCard"><strong>{{ currentPost.description }}</strong></h5>
-                    <img class="img-contain" :src="currentPost.imageUrl" >
-                    <img class="img-contain" :src="currentPost.imageUrl2" >
-                  </div>   
+                    <!-- <h5 class="postCard"><strong>{{ currentPost.description }}</strong></h5> -->
+                    <!-- <img class="img-contain" :src="currentPost.imageUrl" >
+                    <img class="img-contain" :src="currentPost.imageUrl2" > -->
+                  <!-- </div>    -->
                     <!-- shown if editing -->                                                   
                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.title"/>
-                   <button v-if="currentPost.description" class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                   <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
                    
                    
-                    <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
-                    <button   class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button>
+                    <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
+                    <button   class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button> -->
                     <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
                     <button   class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button> -->
                    
                  
                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 1" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description"/>
-                  <button v-if="currentPost.description" class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                  <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
                   
                  
                    <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
@@ -48,57 +48,61 @@
                  
                  
                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 2" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description2"/>
-                  <button v-if="currentPost.description" class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                  <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
                  
                  
                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 3" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description3"/>
-                  <button v-if="currentPost.description" class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                  <button class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
                   
                   <div v-show="editing" class="form-group">
                     <div class="custom-file">
-                        <label class="">1</label>                                     <!-- shown if editing -->   
-                      <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
+                        <!-- <label class="">1</label>                                     shown if editing    -->
+                      <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
                      <label class="">2</label> 
                        <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl2 || showAdminBoard" type="file" ref="file" @change="onSelect2" class="" id="">
                       
-                      <label class=""></label>                 
+                      <label class=""></label>                  -->
                     </div>
                     <div class="py-3"></div>
                   </div>
                 </div>
-                <img  v-if="dataUser.id == currentPost.userId || showAdminBoard" class="card-img-bottom" src="" alt="">
-                <img  v-else class="card-img-bottom" src="" alt="">
+                <!-- <img  v-if="dataUser.id == currentPost.userId || showAdminBoard" class="card-img-bottom" src="" alt="">
+                <img  v-else class="card-img-bottom" src="" alt=""> -->
                                      <!-- Buttons accesssibles if current user is user whom made post or administrator-->   
-                <a href="#top"> <button v-show="!editing"  class="btn btn-outline pink float-right buttonCEC"> Comment </button></a>
-                <button v-show="isDisplay" v-if="dataUser.id == currentPost.userId || showAdminBoard" class="btn btn-success float-right buttonCEC" href="#top" @click="editPost(currentPost)"> Edit </button>
+                <!-- <a href="#top"> <button v-show="!editing"  class="btn btn-outline pink float-right buttonCEC"> Comment </button></a> -->
+                <!-- <button v-if="dataUser.id == currentPost.userId || showAdminBoard" class="btn btn-success float-right buttonCEC" href="#top" @click="editPost(currentPost)"> Edit </button>
                 <button v-show="editing" v-if="currentPost.description" class="btn btn-success mr-2 float-right" type="submit" @click="editPost(currentPost)"> Update </button>
                 <button v-show="editing" v-if="currentPost.imageUrl" class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button>
                  
                   <button v-show="editing" v-if="currentPost.imageUrl" class="btn btn-success mr-2 float-right" type="submit" @click="uploadImage(currentPost)"> Upload </button>
-                <button v-show="!editing" class="btn btn-secondary mr-2 float-right" @click="cancelled()"> Back </button>     
+                <button v-show="!editing" class="btn btn-secondary mr-2 float-right" @click="cancelled()"> Back </button>      -->
                 <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="btnC" class="btn btn-secondary mr-2 float-right marginRightButton" @click="cancel()"> Cancel </button>
                 <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button>
                 <div class="post-heading">
                   <div class="float meta">
                     <div class="title h5">
                       <div class="" v-show="!editing">      <!-- get all comments of a post-->   
-                        <div v-for="comment in comments" :key="comment.id">  
+                        <!-- <div v-for="comment in comments" :key="comment.id">  
                           <div v-if="currentPost.id == comment.postId" class="comment float-right card rounded card-white"> 
                             <div class="list-group-item">
                               <a href="#"><b> {{ comment.user.username }} </b></a> 
                               <span> made a comment </span>  
                               <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6> 
                               <div>{{ comment.description }} </div>    
-                                             <!-- Edit button is accesssible if current user is user whom made comment of the post or administrator-->  
-                              <a :href="'/comments/' + comment.id"><button v-if="dataUser.id == comment.userId || showAdminBoard" class="btn btn-success float-right"> Edit </button></a>
+                                              Edit button is accesssible if current user is user whom made comment of the post or administrator-->  
+                              <!-- <a :href="'/comments/' + comment.id"><button v-if="dataUser.id == comment.userId || showAdminBoard" class="btn btn-success float-right"> Edit </button></a>
                             </div>
                           </div>
-                        </div>
+                        </div> --> 
+                        <br>
+                        <br>
+                        <br>
                         <div class="postCard"> 
                            <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">       
                           <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" type="text"   class="form-control" id="description" autofocus v-model="comment.description"/> -->
                         </div>
-                        <div class="d-flex justify-content-between float-right width-box">   <img class="card-img-bottom float-left" src="" alt="">
+                        <div class="d-flex justify-content-between float-right width-box">  
+                           <!-- <img class="card-img-bottom float-left" src="" alt=""> -->
                           <div  class="">
                             <button  @click="saveComment" class="btn btn-primary float-right"> Share </button>
                             <button class="btn btn-secondary mr-2 float-right" @click="cancelled()"> Cancel </button>
@@ -170,7 +174,7 @@ export default {
      let id = this.currentPost.id
     //  formData.append("file", this.currentPost.imageUrl, this.currentPost.imageUrl.name);
       formData.append("file", this.currentPost.imageUrl2, this.currentPost.imageUrl2.name);
-      formData.append("title", this.currentPost.title,);
+         formData.append("title", this.currentPost.title,);
          formData.append("description", this.currentPost.description,);
          formData.append("description2", this.currentPost.description2,);
          formData.append("description3", this.currentPost.description3,);
@@ -297,7 +301,13 @@ export default {
     updatePost() {
       
        var upData = {    
-       description: this.currentPost.description}
+       title: this.currentPost.title,
+       description: this.currentPost.description,
+       description2: this.currentPost.description2,
+       description3: this.currentPost.description3,
+       
+       }
+       
       //  JSON.parse(JSON.stringify(upData))
       
       PostDataService.updateAPost(this.currentPost.id,upData)
@@ -306,7 +316,7 @@ export default {
           
           console.log(response.data);
           this.message = 'The post was updated successfully!';
-          this.$router.push({ name: "posts" });
+          // this.$router.push({ name: "posts" });
         })
         .catch(e => {
           console.log(e);

@@ -43,6 +43,7 @@ export default {
         currentIndex: -1,         
         message: '',
         comment: {
+          imageUrl:"",
           id: null,
           post_id: "",      
           description: "",

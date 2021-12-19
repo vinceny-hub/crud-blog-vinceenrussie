@@ -17,9 +17,9 @@ module.exports = {
     imageUrl: { 
       type: Sequelize.STRING(99),
     },
-    imageUrl2: { 
-      type: Sequelize.STRING(99),
-    },
+    // imageUrl2: { 
+    //   type: Sequelize.STRING(99),
+    // },
     description: {
       // allowNull: false,
       type: Sequelize.STRING(255),

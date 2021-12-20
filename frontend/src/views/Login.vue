@@ -3,7 +3,7 @@
     <div class="card card-container">
       <img
         id="profile-img"
-        src="../img/titi0.png"
+        src=""
         class="profile-img-card"
       />
       <form name="form" @submit.prevent="handleLogin">

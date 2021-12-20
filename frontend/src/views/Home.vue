@@ -13,7 +13,7 @@
 import Diaporama from '@/components/Diaporama.vue'
 import Body from '@/components/Body.vue'
 export default {
-  name: '',
+  name: 'home',
   components: {
     Diaporama,
     Body

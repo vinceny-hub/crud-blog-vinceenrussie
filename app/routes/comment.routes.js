@@ -9,7 +9,7 @@ const multer = require('../middleware/multer-config')
   router.post("/", auth, multer, comments.createComment);
 
   // Retrieve all Comments
-  router.get("/", auth, comments.findAll);
+  router.get("/", comments.findAll);
 
   // Retrieve all published Posts
   router.get("/published", auth, comments.findAllPublished);

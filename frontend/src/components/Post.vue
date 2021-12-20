@@ -295,7 +295,7 @@ export default {
     // cancelled 
     cancelled(){
        this.show()
-       this.$router.push({ name: "posts" });
+       this.$router.push({ name: "posts-list" });
     },
     // updating post
     updatePost() {

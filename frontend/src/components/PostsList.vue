@@ -63,7 +63,7 @@ import PostCommentService from "../services/PostCommentService";
 import UpLoadFilesService from '../services/UpLoadFilesService';
 
 export default {
-  name: "home",
+  name: "posts-list",
   data() {
     return {
       posts:[],

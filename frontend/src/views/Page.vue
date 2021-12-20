@@ -24,31 +24,39 @@
                   </div>                                          <!-- shown if not editing -->
                   <!-- <div class="kl card aPost rounded card-white" v-if="!editing">  -->
                                                                    <!-- get post selected -->
+
+                                                                   
                     <h5 class="postCard"><strong>{{ currentPost.title }}</strong></h5> 
+                     
                                                            <div class="" v-for="(comment, index) in comments.slice(0,1)" :key="comment.id">
-                                  {{ index }}
+                                                                  {{ index }}
+                                                           
+                               
                                   <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
-    <div class=""><img class="img-contain" :src="comment.imageUrl"></div>
+    <div v-if="currentPost.id == comment.postId" class="">
+        <img class="img-contain" :src="comment.imageUrl"></div>
     </div>
                     <h5 class="postCard"><strong>{{ currentPost.description }}</strong></h5> 
-                                                           <div class="" v-for="(comment, index) in comments.slice(0,1)" :key="comment.id">
+                     <div  v-if="currentPost.id == comment.postId"> 
+                                                           <div class="" v-for="(comment, index) in comments.slice(1,2)" :key="comment.id">
                                   {{ index }}
+                                                           </div>
                                   <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
     <div class=""><img class="img-contain" :src="comment.imageUrl"></div>
     </div>                                             
                     <h5 class="postCard"><strong>{{ currentPost.description2 }}</strong></h5>
-                                                           <div class="" v-for="(comment, index) in comments.slice(0,1)" :key="comment.id">
+                                                           <div class="" v-for="(comment, index) in comments.slice(2,3)" :key="comment.id">
                                   {{ index }}
                                   <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
     <div class=""><img class="img-contain" :src="comment.imageUrl"></div>
     </div>
                     <h5 class="postCard"><strong>{{ currentPost.description3 }}</strong></h5>
-                                            <div class="" v-for="(comment, index) in comments.slice(0,1)" :key="comment.id">
+                                            <div class="" v-for="(comment, index) in comments.slice(4,5)" :key="comment.id">
                                   {{ index }}
                                   <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
     <div class=""><img class="img-contain" :src="comment.imageUrl"></div>
     </div>
-     <div class="" v-for="(comment) in comments.slice(1,2)" :key="comment.id">
+     <div class="" v-for="(comment) in comments.slice(5,6)" :key="comment.id">
                                  
                                   <!-- <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6> -->
     <div class=""><img class="img-contain" :src="comment.imageUrl"></div>

@@ -10,7 +10,7 @@
           <router-link class="imgBlog" :to="{name: 'page', params: { id: post.id }}"> 
         <!-- <div class="imgBlog"> -->
     <!-- <div class="card aPost rounded card-white"> <h5><strong>{{ post.description1 }}</strong></h5><img class="img-contain" :src="post.imageUrl"></div> -->
-                               <div class="" v-for="comment in comments.slice().reverse()" :key="comment.id">
+                               <div class="" v-for="comment in comments.slice(0,1).reverse()" :key="comment.id">
                                  <div class="" v-if="post.id == comment.postId">                    
                             <div class="">  
                                   <!-- {{ comment.user.username }} -->
@@ -70,7 +70,7 @@ import PostCommentService from "../services/PostCommentService";
 import UpLoadFilesService from '../services/UpLoadFilesService';
 
 export default {
-  name: "post-list",
+  name: "home",
   data() {
     return {
       posts:[],

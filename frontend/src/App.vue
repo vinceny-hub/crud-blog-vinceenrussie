@@ -51,7 +51,7 @@
               <!-- <router-link to="/login" class="nav-link"><font-awesome-icon icon="sign-in-alt" />Login </router-link> -->
               <router-link to="/"> Home </router-link> |
               <router-link v-if="showAdminBoard" to="/about"> Edit </router-link>
-              <router-link v-if="showAdminBoard" to="/add"> Create </router-link>
+              <router-link v-if="showAdminBoard" to="/posts"> Create </router-link>
           
           </nav>
                

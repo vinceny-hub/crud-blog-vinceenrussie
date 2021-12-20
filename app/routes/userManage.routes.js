@@ -10,7 +10,7 @@ const multer = require('../middleware/multer-config')
   router.delete("/:id", auth, userManageCtrl.delete);
 
   // Retrieve all Users
-  router.get("/", auth,   userManageCtrl.findAll);
+  router.get("/", userManageCtrl.findAll);
 
 
   // Retrieve a single User with id

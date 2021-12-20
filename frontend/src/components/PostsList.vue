@@ -4,129 +4,53 @@
   <div class="container-fluid">
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col-md-8 gedf-main">
-         <div class="" v-if="!submitted">
-          <div class="box-header-body-input">
-          
+        <div class="" v-if="!submitted">
+          <div class="box-header-body-input">          
             <div class="card-body card-input">
-             
-                  <div class="form-group">
-                    <label class="sr-only" for="message">post</label>
-                      <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description1" autofocus  placeholder="What are you thinking?"/> -->
-                       <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.title" autofocus  placeholder="Titre du nouvel article"/>
-                        <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/>
-                         <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description2" autofocus  placeholder="Titre du nouvel article"/>
-                          <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description3" autofocus  placeholder="Titre du nouvel article"/>
-                            <input  type="file" ref="file" @change="onSelect" class="" id="">
-                             <input  type="file" ref="file" @change="onSelect2" class="" id="">
-                  <!-- </div> -->
-                   <button @click="savePost()" type="submit" class="btn btn-primary float-right" v-show="isHidden">Créer</button>
-                    <button @click="uploadImage"  type="submit" class="btn btn-success float-right">Upload</button> 
-
-                <!-- </div> -->
-                <!-- <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab"> -->
-                 
-                </div>
-               
-              <!-- </div> -->
+              <div class="form-group">
+                <h1 class="" for="message">Créer un article</h1>
+                <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description1" autofocus  placeholder="What are you thinking?"/> -->
+                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.title" autofocus  placeholder="Titre du nouvel article"/>
+                <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/>
+                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description2" autofocus  placeholder="Titre du nouvel article"/>
+                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description3" autofocus  placeholder="Titre du nouvel article"/>
+                <input  type="file" ref="file" @change="onSelect" class="" id="">
+                <input  type="file" ref="file" @change="onSelect2" class="" id=""> -->                
+                <button :disabled="!post.title" @click="savePost()" type="submit" class="btn btn-primary" v-show="isHidden">Créer un nouvel article</button>                
+              </div>           
               <div>
                 <div v-if="!emptyError"></div>
-            </div>
-          </div> 
-        </div>
-      </div>
-       
-      <div class="">          
-        <div class="d-inline-flex p-2 post_title_margin"> 
-        <img class="titi_img" src="" alt=""> 
-
-        <h4 class="title-pos">Posts</h4></div>
-        <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse()" :key="post.id">
-    
-      <h1 class="titreBlogBox"><router-link class="titreBlog" :to="{name: 'post', params: { id: post.id }}"> {{ post.title }}</router-link></h1>
-          <router-link class="imgBlog" :to="{name: 'post', params: { id: post.id }}"> 
-        <!-- <div class="imgBlog"> -->
-    <!-- <div class="card aPost rounded card-white"> <h5><strong>{{ post.description1 }}</strong></h5><img class="img-contain" :src="post.imageUrl"></div> -->
-                               <div class="" v-for="(comment) in comments.slice(-1).reverse()" :key="comment.id">
-                                  <!-- {{ comment.user.username }} -->
-                                  <!-- <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6> -->
-    <div class=""><img class="img-contain" :src="comment.imageUrl"></div>
-    </div>
-                
-          <div class="conteneurImage">
-            <p class="resumeBlog">{{ post.description }}</p>
-            <p class="resumeBlog">{{ post.description2 }}</p>
-            <p class="resumeBlog">{{ post.description3 }}</p>
-            
-            
-            </div>
-            
-            
-      
-          <!-- </div> -->
-            </router-link>
-   
-   </div>
-          <!-- <div class="">
-            <div class="post-heading">            
-              <ul class="list-group">            -->
-                                          <!-- list of posts reversed -->
-                <!-- <li class="card rounded card-white postBox" @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse()" :key="post.id"> 
-                <div class="card-body">
-                  <div class="float meta ">                     
-                    <div class="title h5">                        -->
-                        <!-- Link to profile page  -->
-                        <!-- <span class="colorLink"><b> {{ post.user.username}} </b></span> 
-                          made a post. -->
-                    <!-- </div>
-                    <h6 class="text-muted time"> {{ post.createdAt.slice(7,10).replace(/-/g,` `) }} {{ post.createdAt.slice(5,7).replace(/-/g,` `) }} {{ post.createdAt.slice(0,4).replace(/-/g,`.`) }} {{post.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
-                  </div>                                                         
-                    posted image -->
-                  <!-- <div class="card aPost rounded card-white"> <h5><strong>{{ post.description }}</strong></h5> -->
-                  <!-- <img class="img-contain" :src="post.imageUrl"> -->
-                  <!-- </div> 
-                  <div class="card aPost rounded card-white"> <h5><strong>{{ post.description1 }}</strong></h5> -->
-                  <!-- <img class="img-contain" :src="post.imageUrl"> -->
-                  <!-- </div>
-                  <div class="card aPost rounded card-white"> <h5><strong></strong></h5><img class="img-contain" :src="post.imageUrl"></div> 
-                  <div class="">
-                    <div class="post-heading">
-                      <div class="float meta">
-                        <div class="title h5">           -->
-                                                   <!-- comments in post -->
-                          <!-- <div  v-for="comment in comments" :key="comment.id"> <div class="comment float-right card rounded card-white" v-if="post.id == comment.postId">                     -->
-                            <!-- <div class="list-group-item">   -->
-                              <!-- <div class="title h5"> <a href="#"><b> {{ comment.user.username }} </b></a>  made a comment </div>   -->
-                              <!-- <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>  -->
-                               <!-- <div class="" v-for="(comment) in comments.slice(-1).reverse()" :key="comment.id">
-                                  {{ comment.user.username }}
-                                  <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
-    <div class="card aPost rounded card-white"> <h5><strong></strong></h5><img class="img-contain" :src="comment.imageUrl"></div>
-    </div>
-                            </div> -->
-                            
-      
-                          <!-- </div> -->
-                          <!--  </div>    
-                          </div>
-                        </div>
-                      </div> 
-                    </div>
-                  </div>             
-                </div>  
-                <div>    
-              <div class="mini_logo_pos">   
-              <img class="titi_img" src="../img/titi1.png" alt="Goupomania image"><p class="titi_title_mini"> Le coin de Titi </p>    -->
-               <!-- create a comment for this post -->
-              <!-- </div>
-              <a :href="'/posts/' + post.id"><button  href="#top" class="btn btn-outline pink float-right float-bottom"> Comment </button></a>
               </div>
-            </div>             
-            </li>
-            </ul>            
+            </div> 
           </div>
-        </div> -->
-
-       
+        </div>       
+        <div class="">          
+        <div class="d-inline-flex p-2 post_title_margin"> 
+        <img class="" src="" alt="">        
+        </div>
+        <section>
+          <h2 class="posts">Tous les posts</h2>
+            <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse()" :key="post.id">    
+              <h1 class="titreBlogBox">
+                <router-link class="titreBlog" :to="{name: 'page', params: { id: post.id }}"> {{ post.title }}
+                </router-link>
+              </h1>
+              <router-link class="imgBlog" :to="{name: 'page', params: { id: post.id }}"> 
+                <div class="" v-for="comment in comments.slice().reverse()" :key="comment.id">
+                  <div class="" v-if="post.id == comment.postId">                    
+                    <div class="">                                    
+                      <div class="">
+                        <img class="img-contain" :src="comment.imageUrl">
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <div class="conteneurImage">
+                  <p class="resumeBlog">{{ post.description }}</p> 
+                </div> 
+              </router-link>  
+            </div>  
+        </section>       
         </div>
       </div>
     </div>

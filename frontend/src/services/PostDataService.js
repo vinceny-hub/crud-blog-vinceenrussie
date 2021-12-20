@@ -8,6 +8,9 @@ class PostDataService {
   get(id) {
     return http.get(`/posts/${id}`);
   }
+  getAPage(id) {
+    return http.get(`/posts/${id}`);
+  }
 
   create(data, formData) {
     return http.post("/posts", data, formData);

@@ -7,6 +7,7 @@ import Register from './views/Register.vue';
 import Post from './components/Post.vue';
 // import Post from './components/Post.vue';
 import Home from './components/Body.vue';
+import Page from './views/Page.vue';
 
 Vue.use(Router);
                               // path url in application
@@ -26,6 +27,11 @@ export const router = new Router({
       path: '/login',
       component: Login
     },
+    {
+    path: '/page/:id',
+    name:'page',
+    component: Page
+  },
     {
       path: '/register',
       component: Register

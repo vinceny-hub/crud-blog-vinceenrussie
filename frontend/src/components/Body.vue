@@ -6,8 +6,8 @@
 
             <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse(-1)" :key="post.id">
     
-      <h1 class="titreBlogBox"><router-link class="titreBlog" :to="{name: 'post', params: { id: post.id }}"> {{ post.title }}</router-link></h1>
-          <router-link class="imgBlog" :to="{name: 'post', params: { id: post.id }}"> 
+      <h1 class="titreBlogBox"><router-link class="titreBlog" :to="{name: 'page', params: { id: post.id }}"> {{ post.title }}</router-link></h1>
+          <router-link class="imgBlog" :to="{name: 'page', params: { id: post.id }}"> 
         <!-- <div class="imgBlog"> -->
     <!-- <div class="card aPost rounded card-white"> <h5><strong>{{ post.description1 }}</strong></h5><img class="img-contain" :src="post.imageUrl"></div> -->
                                <div class="" v-for="comment in comments.slice().reverse()" :key="comment.id">

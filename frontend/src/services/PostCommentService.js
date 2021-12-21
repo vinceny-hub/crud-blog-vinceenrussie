@@ -9,9 +9,9 @@ class PostCommentService {
     return http.get(`/comment/${id}`);
   }
 
-  create(data, formData) {
-    console.log(data, formData)
-    return http.post("/comment", data);
+  create(formData) {
+    console.log(formData)
+    return http.post("/comment", formData);
   }
 
   update(id, formdata) {

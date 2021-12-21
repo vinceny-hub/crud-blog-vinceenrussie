@@ -15,7 +15,7 @@ const multer = require('../middleware/multer-config')
   router.get("/published", auth, comments.findAllPublished);
 
   // Retrieve a single Comment with id
-  router.get("/:id", auth, comments.findOne);
+  router.get("/:id", comments.findOne);
 
   // Update a Comment with id
   router.put("/:id", auth, multer, comments.update);

@@ -16,7 +16,8 @@
                 </div>                            
               </div>                                                 <!-- get comment if editing -->
               <div v-if="!editing"> <h5><strong>{{ currentComment.description }}</strong></h5></div> 
-              <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" v-else type="text"  class="form-control" id="description" v-model="currentComment.description"/>
+              <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id=""> 
+              <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" v-else type="text"  class="form-control" id="description" v-model="currentComment.description"/> -->
             </div>                                              <!-- edit, cancel and upload button. This is accesssible if current user is user whom made post or administrator-->
             <img v-if="dataUser.id == currentComment.userId || showAdminBoard" class="card-ico" src="../img/titi1.png" alt="icon titi">
             <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="editPost(currentComment)"> {{editing? 'Update':'Modify'}} </button>
@@ -32,6 +33,7 @@
 
 <script>
 import PostCommentService from "../services/PostCommentService";
+// import UpLoadFilesService from "../services/UpLoadFilesService";
 // import CommentPostService from "../services/CommentPostService";
 
 export default {
@@ -57,6 +59,12 @@ export default {
   },
 
   methods: {
+      onSelect(e){     
+      const file = this.$refs.file.files[0];
+        this.currentComment.imageUrl = file;
+        console.log(e)
+        // console.log(this.currentPost.imageUrl)        
+    },
     // save a comment
     saveComment() {     
     //   let dataUser = JSON.parse(localStorage.getItem("user"))
@@ -114,6 +122,7 @@ export default {
         .then(response => {
           this.currentComment = response.data;
           console.log(response.data);
+             console.log(response.data.imageUrl);
         })
         .catch(e => {
           console.log(e);
@@ -132,19 +141,41 @@ export default {
     editPost(){    
       this.editing = this.editing == true?false:true    
         if(this.editing== false){
-        this.updateComment()
+        // this.updateComment()
+        this.updateImage()
         }      
       console.log(this.editing)
     },
     // update a comment
     updateComment() {
         var data = {    
-       description: this.currentComment.description}
+       imageUrl: this.currentComment.imageUrl}
       PostCommentService.update(this.currentComment.id, data)
         .then(response => {
           console.log(response.data);
           this.message = 'The post was updated successfully!';
           this.$router.push({ name: "posts" });
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+     updateImage() {
+     const formData = new FormData();
+     let id = this.currentComment.id
+    //  formData.append("file", this.currentPost.imageUrl, this.currentPost.imageUrl.name);
+      formData.append("file", this.currentComment.imageUrl, this.currentComment.imageUrl.name);
+        //  formData.append("title", this.current.title,);
+        //  formData.append("description", this.currentPost.description,);
+        //  formData.append("description2", this.currentPost.description2,);
+        //  formData.append("description3", this.currentComment.description3,);
+     PostCommentService.update(id, formData)
+        .then(() => {
+          // console.log(response.data);
+          this.message = 'The post was updated successfully!';
+          this.$router.push({ name: "posts" });
+             
         })
         .catch(e => {
           console.log(e);

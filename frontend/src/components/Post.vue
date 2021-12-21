@@ -28,42 +28,98 @@
                     <!-- <img class="img-contain" :src="currentPost.imageUrl" >
                     <img class="img-contain" :src="currentPost.imageUrl2" > -->
                   <!-- </div>    -->
-                    <!-- shown if editing -->                                                   
-                 <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.title"/>
-                   <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
-                   
-                   
-                    <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
-                    <button   class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button> -->
-                    <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
-                    <button   class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button> -->
-                   
-                 
-                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 1" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description"/>
-                  <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                    <!-- shown if editing -->  
+                                                           
+                   <div>
+                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.title"/>
+                  <button  class="btn btn-success mr-2 float-right  description" type="submit" @click="updatePost(currentPost)"> Update </button>
+                   <div class="" v-for="comment in comments.slice(0,1)" :key="comment.id">
+                  <img class="img-contain" :src="comment.imageUrl" > 
+                  </div>
+                  <!-- v-for="item in items" v-if="item !== null" -->
                   
+                  <input type="file" ref="file" @change="onSelect" class="form-control" id="">
+                  <!-- </div>   -->
+                   <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
+                  <button v-show="comments.length<1<0" class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Upload Image </button>
+                  <button v-show="comments.length>1>0" class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Edit </button>
+                  
+                   </div>
+                   
+                      
+                  
+                   <!-- ******************************************************************************************************************************* -->
+                   
+                    <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
+                    <button   class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button> -->
+                    <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
+                    <button   class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button> -->
+                   
+                  <div>
+                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 1" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.description"/>
+                  <button  class="btn btn-success mr-2 float-right  description" type="submit" @click="updatePost(currentPost)"> Update </button>
+                   <div class="" v-for="comment in comments.slice(1,2)" :key="comment.id">
+                  <img class="img-contain" :src="comment.imageUrl" > 
+                  </div>
+                 
+                    <input type="file" ref="file2" @change="onSelect2" class="form-control" id="">
+                  <!-- </div>   -->
+                   <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
+                  <button  v-show="comments.length< 2" class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Upload Image </button>
+                  <button v-show="comments.length>=2" class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Edit </button>
+                  </div>
+                 
                  
                    <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
                    <button class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button> -->
                  
+                  <div>
+                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 1" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.description"/>
+                  <button  class="btn btn-success mr-2 float-right  description" type="submit" @click="updatePost(currentPost)"> Update </button>
+                   <div class="" v-for="comment in comments.slice(2,3)" :key="comment.id">
+                  <img class="img-contain" :src="comment.imageUrl" > 
+                  </div>
                  
-                 <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 2" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description2"/>
-                  <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
-                 
-                 
-                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 3" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description3"/>
-                  <button class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                    <input type="file" ref="file3" @change="onSelect3" class="form-control" id="">
+                  <!-- </div>   -->
+                   <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
+                  <button  v-show="comments.length < 3" class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Upload Image </button>
+                  <button v-show="comments.length >= 3 " class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Edit </button>
+                  </div>
                   
+
+                   <div>
+                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 1" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.description"/>
+                  <button  class="btn btn-success mr-2 float-right  description" type="submit" @click="updatePost(currentPost)"> Update </button>
+                   <div class="" v-for="comment in comments.slice(3,4)" :key="comment.id">
+                  <img class="img-contain" :src="comment.imageUrl" > 
+                  </div>
+                 
+                    <input type="file" ref="file4" @change="onSelect4" class="form-control" id="">
+                  <!-- </div>   -->
+                   <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
+                  <button  v-show="comments.length < 4" class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Upload Image </button>
+                  <button v-show="comments.length >= 4 " class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Edit </button>
+                  </div>
+                  
+                  <div>
+                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 1" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.description"/>
+                  <button  class="btn btn-success mr-2 float-right  description" type="submit" @click="updatePost(currentPost)"> Update </button>
+                   <div class="" v-for="comment in comments.slice(4,5)" :key="comment.id">
+                  <img class="img-contain" :src="comment.imageUrl" > 
+                  </div>
+                 
+                    <input type="file" ref="file5" @change="onSelect5" class="form-control" id="">
+                  <!-- </div>   -->
+                   <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
+                  <button  v-show="comments.length < 5" class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Upload Image </button>
+                  <button v-show="comments.length >= 5 " class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Edit </button>
+                  </div>
+
+
                   <div v-show="editing" class="form-group">
-                    <div class="custom-file">
-                        <!-- <label class="">1</label>                                     shown if editing    -->
-                      <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
-                     <label class="">2</label> 
-                       <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl2 || showAdminBoard" type="file" ref="file" @change="onSelect2" class="" id="">
-                      
-                      <label class=""></label>                  -->
-                    </div>
-                    <div class="py-3"></div>
+                   
+                 
                   </div>
                 </div>
                 <!-- <img  v-if="dataUser.id == currentPost.userId || showAdminBoard" class="card-img-bottom" src="" alt="">
@@ -98,7 +154,7 @@
                         <br>
                         <br>
                         <div class="postCard"> 
-                           <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">       
+                           <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">        -->
                           <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" type="text"   class="form-control" id="description" autofocus v-model="comment.description"/> -->
                         </div>
                         <div class="d-flex justify-content-between float-right width-box">  
@@ -163,8 +219,26 @@ export default {
         // console.log(this.currentPost.imageUrl)        
     },
       onSelect2(e){     
-      const file = this.$refs.file.files[0];
-        this.currentPost.imageUrl2 = file;
+      const file = this.$refs.file2.files[0];
+        this.currentPost.imageUrl = file;
+        console.log(e)
+        // console.log(this.currentPost.imageUrl)        
+    },
+       onSelect3(e){     
+      const file = this.$refs.file3.files[0];
+        this.currentPost.imageUrl = file;
+        console.log(e)
+        // console.log(this.currentPost.imageUrl)        
+    },
+       onSelect4(e){     
+      const file = this.$refs.file4.files[0];
+        this.currentPost.imageUrl = file;
+        console.log(e)
+        // console.log(this.currentPost.imageUrl)        
+    },
+       onSelect5(e){     
+      const file = this.$refs.file5.files[0];
+        this.currentPost.imageUrl = file;
         console.log(e)
         // console.log(this.currentPost.imageUrl)        
     },
@@ -173,7 +247,7 @@ export default {
      const formData = new FormData();
      let id = this.currentPost.id
     //  formData.append("file", this.currentPost.imageUrl, this.currentPost.imageUrl.name);
-      formData.append("file", this.currentPost.imageUrl2, this.currentPost.imageUrl2.name);
+      formData.append("file", this.currentPost.imageUrl, this.currentPost.imageUrl.name);
          formData.append("title", this.currentPost.title,);
          formData.append("description", this.currentPost.description,);
          formData.append("description2", this.currentPost.description2,);
@@ -252,13 +326,22 @@ export default {
     getComment() {
       PostCommentService.getAll()
         .then(response => {
+          
           this.comments = response.data;
+         
           console.log(response.data);        
         })
         .catch(e => {
           console.log(e);
         });
     },
+    // showElement(){
+    //    if (this.comments.imageUrl[0]) {
+    //    console.log('ok')
+    //   }else{
+    //     console.log('rien')
+    //   }
+    // },
     // get a post 
     getPost(id) {
       PostDataService.get(id)
@@ -339,6 +422,7 @@ export default {
         });
     }
   },
+ 
   
   mounted() {
     this.message = '';
@@ -463,7 +547,7 @@ li{
   margin-right:8px;
   margin-bottom: 30px;
 }
-#description{
+.description{
   margin-bottom: 30px;
 }
 #btnC{
@@ -484,5 +568,16 @@ li{
 }
 .title-pos{
   margin-left:7px;
+}
+
+.inputBox{
+
+  margin-top:75px;
+  margin-bottom: 55px;
+  /* margin-left:-100px; */
+}
+.float-right-btn{
+margin-top: 30px;
+margin-bottom: 30px;
 }
 </style>

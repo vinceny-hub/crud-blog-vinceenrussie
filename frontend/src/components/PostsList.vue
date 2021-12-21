@@ -32,10 +32,10 @@
           <h2 class="posts">Tous les posts</h2>
             <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse()" :key="post.id">    
               <h1 class="titreBlogBox">
-                <router-link class="titreBlog" :to="{name: 'page', params: { id: post.id }}"> {{ post.title }}
+                <router-link class="titreBlog" :to="{name: 'post', params: { id: post.id }}"> {{ post.title }}
                 </router-link>
               </h1>
-              <router-link class="imgBlog" :to="{name: 'page', params: { id: post.id }}"> 
+              <router-link class="imgBlog" :to="{name: 'post', params: { id: post.id }}"> 
                 <div class="" v-for="comment in comments.slice().reverse()" :key="comment.id">
                   <div class="" v-if="post.id == comment.postId">                    
                     <div class="">                                    

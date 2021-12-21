@@ -64,8 +64,8 @@
                     <!-- <img class="img-contain" :src="currentPost.imageUrl2" > -->
                   <!-- </div>    -->
                     <!-- shown if editing -->                                                   
-                 <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.title"/>
-                   <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                 <!-- <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.title"/>
+                   <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button> -->
                    
                    
                     <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
@@ -74,20 +74,20 @@
                     <button   class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button> -->
                    
                  
-                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 1" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description"/>
-                  <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                  <!-- <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 1" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description"/>
+                  <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button> -->
                   
                  
                    <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">
                    <button class="btn btn-success mr-2 float-right" type="submit" @click="updateImage(currentPost)"> Update Image </button> -->
                  
                  
-                 <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 2" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description2"/>
-                  <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                 <!-- <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 2" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description2"/>
+                  <button  class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button> -->
                  
                  
-                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 3" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description3"/>
-                  <button class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button>
+                  <!-- <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Corps 3" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="description" v-model="currentPost.description3"/>
+                  <button class="btn btn-success mr-2 float-right" type="submit" @click="updatePost(currentPost)"> Update </button> -->
                   
                   <div v-show="editing" class="form-group">
                     <div class="custom-file">
@@ -111,8 +111,8 @@
                  
                   <button v-show="editing" v-if="currentPost.imageUrl" class="btn btn-success mr-2 float-right" type="submit" @click="uploadImage(currentPost)"> Upload </button>
                 <button v-show="!editing" class="btn btn-secondary mr-2 float-right" @click="cancelled()"> Back </button>      -->
-                <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="btnC" class="btn btn-secondary mr-2 float-right marginRightButton" @click="cancel()"> Cancel </button>
-                <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button>
+                <!-- <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="btnC" class="btn btn-secondary mr-2 float-right marginRightButton" @click="cancel()"> Cancel </button>
+                <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button> -->
                 <div class="post-heading">
                   <div class="float meta">
                     <div class="title h5">
@@ -133,14 +133,14 @@
                         <br>
                         <br>
                         <div class="postCard"> 
-                           <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">       
+                           <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">        -->
                           <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" type="text"   class="form-control" id="description" autofocus v-model="comment.description"/> -->
                         </div>
                         <div class="d-flex justify-content-between float-right width-box">  
                            <!-- <img class="card-img-bottom float-left" src="" alt=""> -->
                           <div  class="">
-                            <button  @click="saveComment" class="btn btn-primary float-right"> Share </button>
-                            <button class="btn btn-secondary mr-2 float-right" @click="cancelled()"> Cancel </button>
+                            <!-- <button  @click="saveComment" class="btn btn-primary float-right"> Share </button>
+                            <button class="btn btn-secondary mr-2 float-right" @click="cancelled()"> Cancel </button> -->
                           </div>
                         </div>       
                       </div>

@@ -11,11 +11,12 @@
                 <h1 class="" for="message">Créer un article</h1>
                 <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description1" autofocus  placeholder="What are you thinking?"/> -->
                 <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.title" autofocus  placeholder="Titre du nouvel article"/>
+                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/>
                 <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/>
                 <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description2" autofocus  placeholder="Titre du nouvel article"/>
-                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description3" autofocus  placeholder="Titre du nouvel article"/>
+                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description3" autofocus  placeholder="Titre du nouvel article"/>-->
                 <input  type="file" ref="file" @change="onSelect" class="" id="">
-                <input  type="file" ref="file" @change="onSelect2" class="" id=""> -->                
+              <!--  <input  type="file" ref="file" @change="onSelect2" class="" id=""> -->                
                 <button :disabled="!post.title" @click="savePost()" type="submit" class="btn btn-primary" v-show="isHidden">Créer un nouvel article</button>                
               </div>           
               <div>
@@ -35,12 +36,36 @@
                 <router-link class="titreBlog" :to="{name: 'post', params: { id: post.id }}"> {{ post.title }}
                 </router-link>
               </h1>
+
+                  
               <router-link class="imgBlog" :to="{name: 'post', params: { id: post.id }}"> 
-                <div class="" v-for="comment in comments.slice().reverse()" :key="comment.id">
+                <div class="">
+                  <!-- <div class="" v-if="post.id == comment.postId">                     -->
+                     <div class="" v-for="comment in comments.slice()" :key="comment.id">                                  
+                       <div class="" v-if="post.id == comment.postId"> 
+                        <img class="img-contain" :src="comment.imageUrl">
+                      </div>
+                    </div>
+                  <!-- </div> -->
+                </div>                
+                <div class="conteneurImage">
+                   <div class="" v-for="comment in comments" :key="comment.id">
+                     <div class="" v-if="post.id == comment.postId"> 
+                  <p class="resumeBlog">{{ comment.description }}</p> 
+                     </div>
+                   </div>
+                </div> 
+              </router-link> 
+              
+
+
+
+              <!-- <router-link class="imgBlog" :to="{name: 'post', params: { id: post.id }}"> 
+                <div class="" v-for="comment in comments" :key="comment.id">
                   <div class="" v-if="post.id == comment.postId">                    
                     <div class="">                                    
                       <div class="">
-                        <img class="img-contain" :src="comment.imageUrl">
+                        <img class="img-contain" :src="post.imageUrl">
                       </div>
                     </div>
                   </div>
@@ -48,7 +73,7 @@
                 <div class="conteneurImage">
                   <p class="resumeBlog">{{ post.description }}</p> 
                 </div> 
-              </router-link>  
+              </router-link>   -->
             </div>  
         </section>       
         </div>
@@ -330,29 +355,31 @@ export default {
       let dataUser = JSON.parse(localStorage.getItem("user"))
       const formData = new FormData();
       // if (this.image !== null || "") {
-        formData.append("file", this.post.imageUrl);
+        // formData.append("file", this.post.imageUrl, this.post.imageUrl.name);
         formData.append("id", dataUser.id);
         formData.append("username", dataUser.username,);
+        formData.append("title",this.post.title,);
+        //  formData.append("description",this.post.description,);
 
        
 
 
       // let dataUser = JSON.parse(localStorage.getItem("user"))
       // console.log(dataUser)  
-      var data = {  
-        title: this.post.title,
-        id: dataUser.id,
-        description: this.post.description,
-        description2: this.post.description2,
-        description3: this.post.description3,
+      // var data = {  
+      //   title: this.post.title,
+      //   id: dataUser.id,
+      //   description: this.post.description,
+      //   description2: this.post.description2,
+      //   description3: this.post.description3,
 
         // imageUrl : this.post.imageUrl.name,
 
         
       
-      }
+      // }
       // UpLoadFilesService.upload(formData)
-      PostDataService.create(data, formData)
+      PostDataService.create(formData)
       // PostDataService.create(data)
         .then(response => { 
                  

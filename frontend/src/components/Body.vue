@@ -7,14 +7,51 @@
             <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse(-1)" :key="post.id">
     
       <h1 class="titreBlogBox"><router-link class="titreBlog" :to="{name: 'page', params: { id: post.id }}"> {{ post.title }}</router-link></h1>
-          <router-link class="imgBlog" :to="{name: 'page', params: { id: post.id }}"> 
-        <!-- <div class="imgBlog"> -->
-    <!-- <div class="card aPost rounded card-white"> <h5><strong>{{ post.description1 }}</strong></h5><img class="img-contain" :src="post.imageUrl"></div> -->
-                               <div class="" v-for="comment in comments.slice(0,1).reverse()" :key="comment.id">
+
+      <router-link class="imgBlog" :to="{name: 'page', params: { id: post.id }}"> 
+                <div class="">
+                  <!-- <div class="" v-if="post.id == comment.postId">                     -->
+                     <div class="" v-for="comment in comments.slice()" :key="comment.id">                                  
+                       <div class="" v-if="post.id == comment.postId"> 
+                        <img class="img-contain" :src="comment.imageUrl">
+                      </div>
+                    </div>
+                  <!-- </div> -->
+                </div>                
+                <div class="conteneurImage">
+                   <div class="" v-for="comment in comments" :key="comment.id">
+                     <div class="" v-if="post.id == comment.postId"> 
+                  <p class="resumeBlog">{{ comment.description }}</p> 
+                     </div>
+                   </div>
+                </div> 
+              </router-link> 
+          <!-- <router-link class="imgBlog" :to="{name: 'page', params: { id: post.id }}"> 
+              
+             
+                <div class=""> -->
+                  <!-- <div class="" v-if="post.id == comment.postId">                     -->
+                    <!-- <div class="">                                    
+                      <div class="">
+                        <img class="img-contain" :src="post.imageUrl">
+                      </div>
+                    </div> -->
+                  <!-- </div> -->
+                <!-- </div>                
+                <div class="conteneurImage"> -->
+                   <!-- <div class="" v-for="comment in comments" :key="comment.id">
+                     <div class="" v-if="post.id == comment.postId">  -->
+                  <!-- <p class="resumeBlog">{{ post.description }}</p>  -->
+                     <!-- </div>
+                   </div> -->
+                <!-- </div>  -->
+             
+
+      
+                               <!-- <div class="" v-for="comment in comments.slice(0,1).reverse()" :key="comment.id">
                                  <div class="" v-if="post.id == comment.postId">                    
                             <div class="">  
-                                  <!-- {{ comment.user.username }} -->
-                                  <!-- <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6> -->
+                                 
     <div class=""><img class="img-contain" :src="comment.imageUrl"></div>
     </div>
                                  </div>
@@ -27,11 +64,11 @@
             
             
             </div>
-            
+             -->
             
       
-          <!-- </div> -->
-            </router-link>
+         
+            <!-- </router-link> -->
    
    </div>
         <!-- <tr v-for="post in posts" :key="post._id">

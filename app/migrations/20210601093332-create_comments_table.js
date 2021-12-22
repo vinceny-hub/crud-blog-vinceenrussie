@@ -28,7 +28,10 @@ module.exports = {
     //     },
   
     description: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING(255)
+    },
+    descriptionPhoto: {
+      type: Sequelize.STRING(255)
     },
     imageUrl: { 
       type: Sequelize.STRING(99),

@@ -13,6 +13,9 @@ module.exports = (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING(255)
       },
+      descriptionPhoto: {
+        type: Sequelize.STRING(255)
+      },
 
      
     });

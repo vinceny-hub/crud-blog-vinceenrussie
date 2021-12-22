@@ -26,17 +26,41 @@
                                                                    <!-- get post selected -->
 
                                                                    
-                    <h5 class="postCard"><strong>{{ currentPost.title }}</strong></h5> 
+                    <h5 class="postCard"><strong>{{ currentPost.title }}</strong></h5>
+                     <div class="" v-for="comment in comments" :key="comment.id">
+                   <div v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
+                   <div v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
+                  <img  v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
+                  </div>
+                    
+                      <!-- <img class="img-contain" :src="currentPost.imageUrl" >  -->
+                    <!-- <div class="" v-for="(comment, index) in comments" :key="comment.id"> -->
+                      <!-- {{ index }}                                 -->
                      
-                                                           <div class="" v-for="(comment, index) in comments.slice(0,1)" :key="comment.id">
-                                                                  {{ index }}
-                                                           
-                               
-                                  <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
-    <div v-if="currentPost.id == comment.postId" class="">
-        <img class="img-contain" :src="comment.imageUrl"></div>
-    </div>
-                    <h5 class="postCard"><strong>{{ currentPost.description }}</strong></h5> 
+                       <!-- <div class="" v-for="comment in comments.slice()" :key="comment.id"> -->
+                            <!-- <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6> -->
+                   <!-- <div v-show="comment.userId == currentPost.userId"> <strong> {{comment.description}} </strong> </div>
+                   <div v-show="comment.userId == currentPost.userId"> <strong> {{comment.descriptionPhoto}} </strong> </div> -->
+                   
+                  
+                  <!-- <img  v-show="comment.userId == currentPost.userId" class="img-contain" :src="comment.imageUrl" > 
+                  </div> -->
+                      
+                      <!-- <div v-if="currentPost.id == comment.postId" class="">
+                        <strong>{{ comment.description }}</strong>
+                        <img class="img-contain" :src="comment.imageUrl">
+                        <strong>{{ comment.description }}</strong>
+                        <strong>{{ comment.descriptionPhoto }}</strong> -->
+                        
+                        <!-- <strong>{{ currentPost.description2 }}</strong>
+                        <strong>{{ currentPost.description3 }}</strong> -->
+                      <!-- </div> -->
+                    <!-- </div> -->
+
+
+
+
+                    <!-- <h5 class="postCard"><strong>{{ currentPost.description }}</strong></h5> 
                      <div  v-if="currentPost.id == comment.postId"> 
                                                            <div class="" v-for="(comment, index) in comments.slice(1,2)" :key="comment.id">
                                   {{ index }}
@@ -56,11 +80,11 @@
                                   <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
     <div class=""><img class="img-contain" :src="comment.imageUrl"></div>
     </div>
-     <div class="" v-for="(comment) in comments.slice(5,6)" :key="comment.id">
+     <div class="" v-for="(comment) in comments.slice(5,6)" :key="comment.id"> -->
                                  
                                   <!-- <h6 class="text-muted time"> {{ comment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ comment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ comment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{comment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6> -->
-    <div class=""><img class="img-contain" :src="comment.imageUrl"></div>
-    </div>
+    <!-- <div class=""><img class="img-contain" :src="comment.imageUrl"></div> -->
+    <!-- </div> -->
                     <!-- <img class="img-contain" :src="currentPost.imageUrl2" > -->
                   <!-- </div>    -->
                     <!-- shown if editing -->                                                   

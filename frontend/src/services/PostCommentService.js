@@ -14,8 +14,8 @@ class PostCommentService {
     return http.post("/comment", formData);
   }
 
-  update(id, formdata) {
-    return http.put(`/comment/${id}`, formdata);
+  update(id, data) {
+    return http.put(`/comment/${id}`, data);
   }
 
   delete(id) {

@@ -43,6 +43,8 @@
                    <div v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
                    <div v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
                   <img  v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
+                   <router-link :to="{name: 'comment', params: { id: comment.id }}"> <button class="btn btn-success mr-2 float-right float-right-btn" type="submit"> Edit </button>
+                   </router-link>
                   </div>
                   <!-- v-for="item in items" v-if="item !== null" -->
                   
@@ -50,7 +52,7 @@
                   <!-- </div>   -->
                    <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
                   <button class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="uploadImage"> Upload Image </button>
-                  <button v-show="comments.length>1" class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="saveComment"> Edit </button>
+                  <button class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="editPost"> Edit </button>
                   
                    </div>
                    
@@ -387,7 +389,8 @@ export default {
       this.editing = this.editing == true?false:true    
       this.hide()
         if(this.editing== false){
-        this.updatePost()
+            this.$router.push({ name: "comment" });
+        // this.updatePost()
         
     }      
     console.log(this.editing)  

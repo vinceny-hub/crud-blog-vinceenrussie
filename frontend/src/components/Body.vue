@@ -421,17 +421,8 @@ a:visited{
 }
 
 
-.titreArticle {
-  width: 600px;
-  /* color: red; */
-  color:lightgray;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  
-}
 
-.paragrapheArticle {
+/* .paragrapheArticle {
   width: 600px;
  
   margin-left: auto;
@@ -439,10 +430,10 @@ a:visited{
   color: white;
   text-align: justify;
   
-}
+} */
 
 
-.imageArticle {
+/* .imageArticle {
   width: 600px;
   height: 450px;
   margin-left: auto;
@@ -450,7 +441,7 @@ a:visited{
   display: flex;
 
 
-}
+} */
 
 p{
   color: white;

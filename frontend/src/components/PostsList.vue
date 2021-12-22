@@ -10,14 +10,17 @@
               <div class="form-group">
                 <h1 class="" for="message">Créer un article</h1>
                 <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description1" autofocus  placeholder="What are you thinking?"/> -->
-                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.title" autofocus  placeholder="Titre du nouvel article"/>
-                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/>
+                <label for="">Titre du nouvel article</label>
+                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.title" autofocus  placeholder="Écrire le titre de l'article ici..."/>
+                <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/> -->
                 <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/>
                 <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description2" autofocus  placeholder="Titre du nouvel article"/>
                 <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description3" autofocus  placeholder="Titre du nouvel article"/>-->
-                <input  type="file" ref="file" @change="onSelect" class="" id="">
-              <!--  <input  type="file" ref="file" @change="onSelect2" class="" id=""> -->                
-                <button :disabled="!post.title" @click="savePost()" type="submit" class="btn btn-primary" v-show="isHidden">Créer un nouvel article</button>                
+                <!-- <input  type="file" ref="file" @change="onSelect" class="" id=""> -->
+              <!--  <input  type="file" ref="file" @change="onSelect2" class="" id=""> -->  
+               <div class="btn-container onRight">
+                <button :disabled="!post.title" @click="savePost()" type="submit" class="btn btn-primary" v-show="isHidden">Créer un nouvel article</button>   
+              </div>             
               </div>           
               <div>
                 <div v-if="!emptyError"></div>
@@ -30,7 +33,7 @@
         <img class="" src="" alt="">        
         </div>
         <section>
-          <h2 class="posts">Tous les posts</h2>
+          <h2 class="posts">Éditer les articles :</h2>
             <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse()" :key="post.id">    
               <h1 class="titreBlogBox">
                 <router-link class="titreBlog" :to="{name: 'post', params: { id: post.id }}"> {{ post.title }}
@@ -382,7 +385,7 @@ export default {
       PostDataService.create(formData)
       // PostDataService.create(data)
         .then(response => { 
-                 
+                    
           this.post.id = response.data.id;
           this.retrievePosts();
           this.newPost()
@@ -544,6 +547,9 @@ li{
 }
 .mini_logo_pos{
 float: left;
+}
+a:hover{
+  text-decoration: unset;
 }
 
 </style>

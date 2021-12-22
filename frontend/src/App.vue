@@ -57,6 +57,7 @@
                
                   
           </header> 
+          <Intro/>
           
     <!-- <nav id="#top" class="navbar navbar-expand-lg navbar-light bg-white border-nav static-top">
       <div class="container">
@@ -133,10 +134,12 @@
 
 <script>
 // import Body from '@/components/Body.vue'
+import Intro from '@/components/Intro.vue'
 export default {
    components: {
     // Diaporama,
     // Body
+    Intro
    },
   name: "app",
   computed: {
@@ -221,6 +224,7 @@ footer{
   text-align: center;
   background-color:rgb(17, 17, 17);
   color: #2c3e50;
+
  
 }
 /* body{
@@ -348,8 +352,12 @@ font-family:'Hungaria';
 
 }
 
+
 .header-menu a {
 color: black;
+}
+a:hover{
+  text-decoration: unset;
 }
 
 .header-menu a:hover {

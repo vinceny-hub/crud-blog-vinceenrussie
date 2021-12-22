@@ -23,6 +23,9 @@ export default {
 </script>
 
 <style>
+a:hover{
+  text-decoration: unset;
+}
 /* body { 
   width: 100vw;
   margin: 0 auto;

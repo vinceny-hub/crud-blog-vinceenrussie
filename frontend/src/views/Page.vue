@@ -2,35 +2,38 @@
   <div class="container-fluid">
     <div class="footer-post-list">
       <div class="row h-100 justify-content-center align-items-center">    
-        <div class="col-md-8 gedf-main card .post-comment card-shadow">   
+        <!-- <div class="col-md-8 gedf-main card .post-comment card-shadow">    -->
+        <div class="col-md-8 gedf-main post-comment"> 
           <div v-if="currentPost" class="card-body">
-            <div class="">
+            <!-- <div class="">
               <div class="d-inline-flex p-0"> 
                    <div class="d-inline-flex p-2 post_title_margin"> <img class="title-img" src="" alt=""><h4 class="title-pos">Post</h4></div>
-                <!-- <img class="title-img-comment" src="../img/icon1.png" alt="icon logo titi"> -->
-                <!-- <h4 class="title-pos">Post</h4> -->
+                 <img class="title-img-comment" src="../img/icon1.png" alt="icon logo titi"> 
+                 <h4 class="title-pos">Post</h4> 
               </div>
-            </div>
+            </div> -->
             <div class="jk">
                 <div class="post-heading">            
-                  <div class="list-group">     
+                  <!-- <div class="list-group">     
                     <div class="float meta ">
-                      <div class="title h5">    <!-- post username  -->
+                      <div class="title h5">  
+                       
                         <a href="#"><b> {{ currentPost.user.username }} </b></a>
                           made a post.
                       </div>
                       <h6 class="text-muted time"> {{ currentPost.createdAt.slice(7,10).replace(/-/g,` `) }} {{ currentPost.createdAt.slice(5,7).replace(/-/g,` `) }} {{ currentPost.createdAt.slice(0,4).replace(/-/g,`.`) }} {{currentPost.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
                     </div>
-                  </div>                                          <!-- shown if not editing -->
+                  </div>                                    -->
+                         <!-- shown if not editing -->
                   <!-- <div class="kl card aPost rounded card-white" v-if="!editing">  -->
                                                                    <!-- get post selected -->
 
-                                                                   
-                    <h5 class="postCard"><strong>{{ currentPost.title }}</strong></h5>
+                                                                
+                    <h1 class="postCard titreArticle">{{ currentPost.title }}</h1>
                      <div class="" v-for="comment in comments" :key="comment.id">
-                   <div v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
-                   <div v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
-                  <img  v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
+                   <div  class="paragraphe" v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
+                   <div class="descriptionPhoto" v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
+                  <img v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
                   </div>
                     
                       <!-- <img class="img-contain" :src="currentPost.imageUrl" >  -->
@@ -502,6 +505,7 @@ li{
   width:100%;
   height: 100%;
   object-fit: contain;
+  margin-bottom: 30px;
 }
  .card-shadow{
     box-shadow: 10px 7px 10px #091f43;
@@ -516,7 +520,7 @@ li{
   margin-left: 8px;
 }
 .postCard{ 
-  margin-bottom: 30px;
+  margin-bottom: 45px;
 }
 .buttonCEC{
   margin-right:8px;
@@ -543,5 +547,35 @@ li{
 }
 .title-pos{
   margin-left:7px;
+}
+.descriptionPhoto{
+    color: lightgray;
+    font-weight: 100;
+    font-family:serif;
+    font-style: italic;
+    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+  
+}
+.paragraphe{
+  color: lightgray;
+  font-family:serif;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-size: 17px;
+}
+.titreArticle {
+   text-align: left;
+   color: lightgray;
+  font-family:serif;
+  color: #a43b26;
+  margin-left: auto;
+  /* margin-right: auto */
+ 
+  
 }
 </style>

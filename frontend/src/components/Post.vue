@@ -327,9 +327,22 @@ export default {
           
           console.log(response.data);
        
-          // this.retrievePosts();
+          this.retrievePosts();
       
          })
+    },
+
+      retrievePosts() {
+      // console.log()
+      PostDataService.getAll()
+        .then(response => {        
+          this.posts = response.data;
+          console.log(response.data);
+         
+        })        
+        .catch(e => {
+          console.log(e);
+        });
     },
     // save comment
      saveComment() {    

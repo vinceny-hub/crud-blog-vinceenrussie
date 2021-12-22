@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="footer-post-list">
       <div class="row h-100 justify-content-center align-items-center">    
-        <div class="col-md-8 gedf-main card .post-comment card-shadow">   
+        <div class="col-md-8 gedf-main  .post-comment ">   
           <div v-if="currentPost" class="card-body">
             <div class="">
               <div class="d-inline-flex p-0"> 
-                   <div class="d-inline-flex p-2 post_title_margin"> <img class="title-img" src="" alt=""><h4 class="title-pos">Post</h4></div>
+                   <div class="d-inline-flex p-2 post_title_margin"> <img class="title-img" src="" alt=""><h4 class="title-pos">{{currentPost.title}}</h4></div>
                 <!-- <img class="title-img-comment" src="../img/icon1.png" alt="icon logo titi"> -->
                 <!-- <h4 class="title-pos">Post</h4> -->
               </div>
@@ -30,29 +30,59 @@
                   <!-- </div>    -->
                     <!-- shown if editing -->  
                                                            
-                   <div>
-                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.title"/>
-                  <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.description"/>
+                    <div>
+                      <div class="card card-margin">
+                         <label class="" for="file"><strong>Titre de l'article</strong></label>
+                        <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentPost.title"/>
+                  <!-- <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.description"/>
                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.descriptionPhoto"/>
                    <img class="img-contain" :src="currentPost.imageUrl" > 
-                  <input type="file" ref="file" @change="onSelect" class="form-control" id="">
-                  <button  class="btn btn-success mr-2 float-right  description" type="submit" @click="updatePost(currentPost)"> Update </button>
+                  <input type="file" ref="file" @change="onSelect" class="form-control" id=""> -->
+                  <div class="btn-container onRight">
+                        <button  class="btn btn-success" type="submit" @click="updatePost(currentPost)"> Mettre à jour le titre </button>
+                  </div>
+                      </div>
+                    
+                    <div class="card card-margin">
+                    <div>
+                    <label class="" for="file">Ajouter un paragraphe</label>
                    <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Nouveau paragraphe" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.description"/>
+                    </div>
+                    <div>
+                      <label class="" for="file">Ajouter une description photo</label>
                    <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Légende de la photographie" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.descriptionPhoto"/>
-                   <div class="" v-for="comment in comments" :key="comment.id">
+                    </div>
+                   <div>
+                   <label class="form-control" for="file">Ajouter une photo</label>
+                   <input type="file" ref="file" @change="onSelect" class="form-control" id="">
+                   </div>
+                    </div>
+                   <div class="card card-margin" v-for="comment in comments" :key="comment.id">
                    <div v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
                    <div v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
                   <img  v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
-                   <router-link :to="{name: 'comment', params: { id: comment.id }}"> <button class="btn btn-success mr-2 float-right float-right-btn" type="submit"> Edit </button>
+                   <router-link :to="{name: 'comment', params: { id: comment.id }}">
+                        <div class="btn-container onRight">
+                     <button class="btn btn-success" type="submit"> Editer le paragraphe </button>
+                     </div>
                    </router-link>
                   </div>
                   <!-- v-for="item in items" v-if="item !== null" -->
                   
-                  <input type="file" ref="file" @change="onSelect" class="form-control" id="">
+                  
                   <!-- </div>   -->
                    <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
-                  <button class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="uploadImage"> Upload Image </button>
-                  <button class="btn btn-success mr-2 float-right float-right-btn" type="submit"  @click="editPost"> Edit </button>
+                  <div class="btn-container onRight">
+                  <button class="btn btn-secondary mr-2" @click="cancelled()"> Cancel </button>
+                  <button class="btn btn-warning mr-2" type="submit"  @click="editPost"> Supprimer l'article </button>
+                  <button class="btn btn-primary " type="submit"  @click="uploadImage"> Envoyer le nouvel article </button>                  
+                  </div>
+                  <!-- <div class="btn-container">
+                  <button class="btn btn-secondary mr-2" @click="cancelled()"> Cancel </button>
+                  </div> -->
+                            <!-- <button  @click="saveComment" class="btn btn-primary float-right"> Share </button> -->
+                           
+                        
                   
                    </div>
                    
@@ -144,6 +174,8 @@
                 <button v-show="!editing" class="btn btn-secondary mr-2 float-right" @click="cancelled()"> Back </button>      -->
                 <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="btnC" class="btn btn-secondary mr-2 float-right marginRightButton" @click="cancel()"> Cancel </button>
                 <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button>
+                 
+                
                 <div class="post-heading">
                   <div class="float meta">
                     <div class="title h5">
@@ -164,17 +196,17 @@
                         <br>
                         <br>
                         <br>
-                        <div class="postCard"> 
+                        <!-- <div class="postCard">  -->
                            <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">        -->
                           <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" type="text"   class="form-control" id="description" autofocus v-model="comment.description"/> -->
-                        </div>
-                        <div class="d-flex justify-content-between float-right width-box">  
+                        <!-- </div> -->
+                   
                            <!-- <img class="card-img-bottom float-left" src="" alt=""> -->
-                          <div  class="">
-                            <button  @click="saveComment" class="btn btn-primary float-right"> Share </button>
-                            <button class="btn btn-secondary mr-2 float-right" @click="cancelled()"> Cancel </button>
-                          </div>
-                        </div>       
+                             <!-- <div class="btn-container onRight"> -->
+                            <!-- <button  @click="saveComment" class="btn btn-primary float-right"> Share </button> -->
+                            <!-- <button class="btn btn-secondary mr-2" @click="cancelled()"> Cancel </button> -->
+                          <!-- </div> -->
+                          
                       </div>
                     </div>
                   </div>
@@ -623,5 +655,16 @@ li{
 .float-right-btn{
 margin-top: 30px;
 margin-bottom: 30px;
+}
+.onRight{
+ text-align: end;
+ margin-top: 30px;
+ margin-bottom: 30px;    
+
+}
+.card-margin{
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 30px;
+  
 }
 </style>

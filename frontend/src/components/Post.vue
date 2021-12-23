@@ -2,13 +2,16 @@
   <div class="container-fluid">
     <div class="footer-post-list">
       <div class="row h-100 justify-content-center align-items-center">    
-        <div class="col-md-8 gedf-main  .post-comment ">   
+        <div class="col-md-8 gedf-main card .post-comment ">   
           <div v-if="currentPost" class="card-body">
             <div class="">
               <div class="d-inline-flex p-0"> 
-                   <div class="d-inline-flex p-2 post_title_margin"> <img class="title-img" src="" alt=""><h4 class="title-pos">{{currentPost.title}}</h4></div>
+                   <!-- <div class="d-inline-flex p-2 post_title_margin">  -->
+                     <!-- <img class="title-img" src="" alt=""> -->
+                     <!-- <h4 class="title-pos">{{currentPost.title}}</h4>-->
+                     <!-- </div>  -->
                 <!-- <img class="title-img-comment" src="../img/icon1.png" alt="icon logo titi"> -->
-                <!-- <h4 class="title-pos">Post</h4> -->
+                <h4 class="title-pos">Écrire un nouveau paragraphe</h4>
               </div>
             </div>
             <div class="jk">
@@ -17,11 +20,14 @@
                     <div class="float meta ">
                       <div class="title h5">    <!-- post username  -->
                         <a href="#"><b> {{ currentPost.user.username }} </b></a>
-                          made a post.
+                  
                       </div>
                       <h6 class="text-muted time"> {{ currentPost.createdAt.slice(7,10).replace(/-/g,` `) }} {{ currentPost.createdAt.slice(5,7).replace(/-/g,` `) }} {{ currentPost.createdAt.slice(0,4).replace(/-/g,`.`) }} {{currentPost.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
                     </div>
-                  </div>                                          <!-- shown if not editing -->
+                  </div>      
+                  <h4 class="title-pos">{{currentPost.title}}</h4>
+                  
+                                                      <!-- shown if not editing -->
                   <!-- <div class="kl card aPost rounded card-white" v-if="!editing">  -->
                                                                    <!-- get post selected -->
                     <!-- <h5 class="postCard"><strong>{{ currentPost.description }}</strong></h5> -->
@@ -31,7 +37,7 @@
                     <!-- shown if editing -->  
                                                            
                     <div>
-                      <div class="card card-margin">
+                      <div class="card card-shadow card-margin">
                          <label class="" for="file"><strong>Titre de l'article</strong></label>
                         <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentPost.title"/>
                   <!-- <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.description"/>
@@ -43,7 +49,7 @@
                   </div>
                       </div>
                     
-                    <div class="card card-margin">
+                    <div class="card card-shadow card-margin">
                     <div>
                     <label class="" for="file">Ajouter un paragraphe</label>
                    <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Nouveau paragraphe" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.description"/>
@@ -57,7 +63,19 @@
                    <input type="file" ref="file" @change="onSelect" class="form-control" id="">
                    </div>
                     </div>
-                   <div class="card card-margin" v-for="comment in comments" :key="comment.id">
+                      <div class="card card-shadow card-margin" v-for="comment in comments" :key="comment.id">
+                     <div  class="paragrapheEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
+                   <div class="descriptionPhotoEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
+                  <img v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
+                   <router-link :to="{name: 'comment', params: { id: comment.id }}">
+                        <div class="btn-container onRight">
+                     <button class="btn btn-success" type="submit"> Editer le paragraphe </button>
+                     </div>
+                   </router-link>
+                  </div>
+
+
+                   <!-- <div class="card card-shadow card-margin" v-for="comment in comments" :key="comment.id">
                    <div v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
                    <div v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
                   <img  v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
@@ -66,7 +84,7 @@
                      <button class="btn btn-success" type="submit"> Editer le paragraphe </button>
                      </div>
                    </router-link>
-                  </div>
+                  </div> -->
                   <!-- v-for="item in items" v-if="item !== null" -->
                   
                   
@@ -645,7 +663,7 @@ li{
   object-fit: contain;
 }
  .card-shadow{
-    /* box-shadow: 10px 7px 10px #091f43; */
+    box-shadow: 10px 7px 10px #091f43;
  }
  .gedf-main{
   margin-bottom: 100px;
@@ -706,5 +724,25 @@ margin-bottom: 30px;
   padding: 20px 20px 20px 20px;
   margin-bottom: 30px;
   
+}
+.paragrapheEdit{
+   color: black;
+  font-family:serif;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-size: 17px;
+   text-shadow:lightgray 0.1em 0.1em 0.2em;
+}
+.descriptionPhotoEdit{
+    color: black;
+    font-weight: 100;
+    font-family:serif;
+    font-style: italic;
+    font-size: 15px;
+   
+    text-align: justify;
+     text-shadow: lightgray 0.1em 0.1em 0.2em;
 }
 </style>

@@ -464,7 +464,7 @@ export default {
     border: 0.1vw solid grey;
     margin-bottom: 30px;
     margin-left: 100px; 
-    box-shadow: 5px 5px 5px #091f43;
+    /* box-shadow: 5px 5px 5px #091f43; */
 } 
 .pink{
   border: 1px solid  #091f43;
@@ -508,7 +508,7 @@ li{
   margin-bottom: 30px;
 }
  .card-shadow{
-    box-shadow: 10px 7px 10px #091f43;
+    /* box-shadow: 10px 7px 10px #091f43; */
  }
  .gedf-main{
   margin-bottom: 100px;
@@ -557,6 +557,7 @@ li{
     margin-left: auto;
     margin-right: auto;
     text-align: justify;
+     text-shadow: black 0.1em 0.1em 0.2em;
   
 }
 .paragraphe{
@@ -567,6 +568,7 @@ li{
   margin-bottom: 20px;
   text-align: justify;
   font-size: 17px;
+   text-shadow: black 0.1em 0.1em 0.2em;
 }
 .titreArticle {
    text-align: left;
@@ -575,7 +577,7 @@ li{
   color: #a43b26;
   margin-left: auto;
   /* margin-right: auto */
- 
+ text-shadow: black 0.1em 0.1em 0.2em;
   
 }
 </style>

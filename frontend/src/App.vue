@@ -2,6 +2,7 @@
   <div id="app"> 
      <!-- <div id="nav"> -->
      <header>
+       <FixLogo/>
         <div class="header-box">
         <!-- <FixLogo /> -->
         <img class="imgHeader" src="./img/vincelarge3.jpg" alt="">
@@ -58,6 +59,7 @@
                   
           </header> 
           <Intro/>
+          
           
     <!-- <nav id="#top" class="navbar navbar-expand-lg navbar-light bg-white border-nav static-top">
       <div class="container">
@@ -135,11 +137,13 @@
 <script>
 // import Body from '@/components/Body.vue'
 import Intro from '@/components/Intro.vue'
+import FixLogo from '@/components/FixLogo.vue'
 export default {
    components: {
     // Diaporama,
     // Body
-    Intro
+    Intro,
+    FixLogo
    },
   name: "app",
   computed: {
@@ -216,13 +220,20 @@ footer{
  
 
 }
+h2{
+   text-shadow: black 0.1em 0.1em 0.2em;
+}
+
 #app {
   
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color:rgb(17, 17, 17);
+  background-color:rgb(47, 47, 47);
+  /* background-color:rgb(33, 33, 33); */
+  /* background-color: rgb(25, 25, 25); */
   color: #2c3e50;
 
  
@@ -312,8 +323,8 @@ body{
   }
 
 
-.en {
-  color: blue;
+.en{
+  color: rgb(29, 29, 180);
 }
 .en:hover {
   color: grey;

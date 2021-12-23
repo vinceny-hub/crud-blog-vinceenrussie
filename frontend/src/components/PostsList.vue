@@ -494,7 +494,7 @@ export default {
     border: 1px solid #091f43;
     margin-bottom: 30px;
     margin-left: 100px;
-    box-shadow: 5px 5px 5px #091f43;  
+    /* box-shadow: 5px 5px 5px #091f43;   */
 } 
 .aPost {
     width: 100%;

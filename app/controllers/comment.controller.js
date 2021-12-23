@@ -3,6 +3,7 @@ require('../middleware/auth')
 const Comment = db.comments;
 const User = db.user;
 const Op = db.Sequelize.Op;
+const fs = require('fs');
 
 // exports.createComment = (req, res) => {
 //   // Validate request

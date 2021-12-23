@@ -18,6 +18,10 @@ class PostCommentService {
     return http.put(`/comment/${id}`, data);
   }
 
+  updatePhoto(id, formData) {
+    return http.put(`/comment/${id}`, formData);
+  }
+
   delete(id) {
     return http.delete(`/comment/${id}`);
   }

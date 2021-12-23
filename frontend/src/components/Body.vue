@@ -461,6 +461,9 @@ p{
     margin-right: auto;
     margin-left: auto;
   }
+  a:hover{
+    text-decoration: unset;
+  }
 
 
   .descriptionMosaïque{
@@ -505,6 +508,7 @@ text-align: left;
   /* color: red; */
   color:lightgray;
   font-size: 20px;
+   text-shadow: black 0.1em 0.1em 0.2em;
  
 
 
@@ -528,6 +532,7 @@ text-align: left;
   
   
   border: 5px solid #a43b26;
+  text-decoration: unset;
 
 }
 
@@ -542,6 +547,9 @@ text-align: left;
   padding-left: 9px;
   padding-right: 9px;
   text-align: left; 
+  background-color: rgb(20, 20, 20);
+  /* text-shadow: lightgray 0.01em 0.01em 0.02em */
+
 
  
 }

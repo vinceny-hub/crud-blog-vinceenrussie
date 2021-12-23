@@ -15,15 +15,26 @@
                   <h6 class="text-muted time"> {{ currentComment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ currentComment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ currentComment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{currentComment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
                 </div>                            
               </div>                                                 <!-- get comment if editing -->
-              <div v-if="!editing"> <h5><strong>{{ currentComment.description }}</strong></h5></div> 
-              <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id=""> 
+              <!-- <div v-if="!editing"> <h5><strong>{{ currentComment.description }}</strong></h5></div>  -->
+               <textarea-autosize placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.description"/>
+               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updateComment()"> update </button>
+             
+               <textarea-autosize placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.descriptionPhoto"/>
+               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updateComment()"> update </button>
+
+                <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id=""> 
+                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updatePhoto()"> update </button>
+
+              <!-- <div v-if="!editing"> <h5><strong>{{ currentComment.descriptionPhoto }}</strong></h5></div>  -->
+               <!-- <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updateComment">  {{editing? 'Update':'Modify'}} </button>
+              <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
               <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" v-else type="text"  class="form-control" id="description" v-model="currentComment.description"/> -->
             </div>                                              <!-- edit, cancel and upload button. This is accesssible if current user is user whom made post or administrator-->
-            <img v-if="dataUser.id == currentComment.userId || showAdminBoard" class="card-ico" src="../img/titi1.png" alt="icon titi">
+            <!-- <img v-if="dataUser.id == currentComment.userId || showAdminBoard" class="card-ico" src="../img/titi1.png" alt="icon titi">
             <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="editPost(currentComment)"> {{editing? 'Update':'Modify'}} </button>
             <button v-show="!editing" class="btn btn-secondary mr-2 float-right" @click="$router.go(-1)"> Back </button>   
             <button v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-secondary mr-2 float-right" @click="cancel()"> Cancel </button>
-            <button  v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="badge badge-danger mr-2" @click="deleteComment"> Delete </button>     
+            <button  v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="badge badge-danger mr-2" @click="deleteComment"> Delete </button>      -->
           </div>
         </div>
       </div>
@@ -142,14 +153,19 @@ export default {
       this.editing = this.editing == true?false:true    
         if(this.editing== false){
         // this.updateComment()
-        this.updateImage()
+        // this.updateImage()
+        this.updateComment()
         }      
       console.log(this.editing)
     },
     // update a comment
-    updateComment() {
+ updateComment() {
         var data = {    
-       imageUrl: this.currentComment.imageUrl}
+       description: this.currentComment.description,
+       descriptionPhoto: this.currentComment.descriptionPhoto
+       
+       }
+       
       PostCommentService.update(this.currentComment.id, data)
         .then(response => {
           console.log(response.data);
@@ -161,7 +177,7 @@ export default {
         });
     },
 
-     updateImage() {
+     updatePhoto() {
      const formData = new FormData();
      let id = this.currentComment.id
     //  formData.append("file", this.currentPost.imageUrl, this.currentPost.imageUrl.name);
@@ -170,7 +186,7 @@ export default {
         //  formData.append("description", this.currentPost.description,);
         //  formData.append("description2", this.currentPost.description2,);
         //  formData.append("description3", this.currentComment.description3,);
-     PostCommentService.update(id, formData)
+     PostCommentService.updatePhoto(id, formData)
         .then(() => {
           // console.log(response.data);
           this.message = 'The post was updated successfully!';
@@ -265,7 +281,7 @@ li{
 }
 .gedf-main{  
    margin-bottom: 200px;  
-   box-shadow: 10px 7px 10px #091f43;
+   /* box-shadow: 10px 7px 10px #091f43; */
 }
 .marginBottomButton{
   margin-bottom: 30px;

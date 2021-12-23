@@ -575,7 +575,7 @@ export default {
     border: 0.1vw solid grey;
     margin-bottom: 30px;
     margin-left: 100px; 
-    box-shadow: 5px 5px 5px #091f43;
+    /* box-shadow: 5px 5px 5px #091f43; */
 } 
 .pink{
   border: 1px solid  #091f43;
@@ -618,7 +618,7 @@ li{
   object-fit: contain;
 }
  .card-shadow{
-    box-shadow: 10px 7px 10px #091f43;
+    /* box-shadow: 10px 7px 10px #091f43; */
  }
  .gedf-main{
   margin-bottom: 100px;

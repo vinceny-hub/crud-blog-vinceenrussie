@@ -3,29 +3,32 @@
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col-md-6 gedf-main card">
         <div v-if="currentComment" class="card-body">
-          <h4>Post</h4>
+          <h4>Modifier le paragraphe</h4>
           <div class="">
             <div class="post-heading">            
               <div   class="list-group">
                 <div class="float meta ">
                   <div class="title h5">                <!-- comment username -->
                     <a href="#"><b> {{ currentComment.user.username }} </b></a>
-                      made a post.
+                     
                   </div>
                   <h6 class="text-muted time"> {{ currentComment.createdAt.slice(7,10).replace(/-/g,` `) }} {{ currentComment.createdAt.slice(5,7).replace(/-/g,` `) }} {{ currentComment.createdAt.slice(0,4).replace(/-/g,`.`) }} {{currentComment.createdAt.slice(11,16).replace(/:/g,`h`)}} (UTC)</h6>
                 </div>                            
               </div>                                                 <!-- get comment if editing -->
               <!-- <div v-if="!editing"> <h5><strong>{{ currentComment.description }}</strong></h5></div>  -->
-               <textarea-autosize placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.description"/>
+               <textarea-autosize placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control " id="" v-model="currentComment.description"/>
+               <div class="btn-container onRight">
                <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updateComment()"> update </button>
-             
+               </div>
                <textarea-autosize placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.descriptionPhoto"/>
+                <div class="btn-container onRight">
                <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updateComment()"> update </button>
-
+                </div>
                 <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id=""> 
-                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updatePhoto()"> update </button>
-                  
-                 <button class="btn btn-secondary mr-2" @click="$router.go(-1)"> Retour </button>
+                 <div class="btn-container onRight">
+                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updatePhoto()"> update </button>
+                 </div>
+                 <!-- <button class="btn btn-secondary mr-2" @click="$router.go(-1)"> Retour </button> -->
                   
               <!-- <div v-if="!editing"> <h5><strong>{{ currentComment.descriptionPhoto }}</strong></h5></div>  -->
                <!-- <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updateComment">  {{editing? 'Update':'Modify'}} </button>
@@ -33,10 +36,17 @@
               <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" v-else type="text"  class="form-control" id="description" v-model="currentComment.description"/> -->
             </div>                                              <!-- edit, cancel and upload button. This is accesssible if current user is user whom made post or administrator-->
             <!-- <img v-if="dataUser.id == currentComment.userId || showAdminBoard" class="card-ico" src="../img/titi1.png" alt="icon titi"> -->
-            <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="editPost(currentComment)"> {{editing? 'Update':'Modify'}} </button>
-            <button v-show="!editing" class="btn btn-secondary mr-2 float-right" @click="$router.go(-1)"> Back </button>   
-            <button v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-secondary mr-2 float-right" @click="cancel()"> Cancel </button>
-            <button  v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="badge badge-danger mr-2" @click="deleteComment"> Delete </button>     
+             <div class="btn-container onRight">
+               <button v-show="!editing" class="btn btn-secondary mr-2" @click="$router.go(-1)"> Retour </button> 
+            <button  v-show="!editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-primary" @click="editPost(currentComment)"> Modifier </button>
+               
+           
+  
+           
+            <button  v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="badge badge-danger mr-2" @click="deleteComment"> Supprimer </button>
+          
+            <button v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-secondary" @click="cancel()"> Annuler </button>     
+              </div>
           </div>
         </div>
       </div>
@@ -156,7 +166,7 @@ export default {
         if(this.editing== false){
         // this.updateComment()
         // this.updateImage()
-        this.updateComment()
+        // this.updateComment()
         }      
       console.log(this.editing)
     },
@@ -200,21 +210,52 @@ export default {
         });
     },
     // delete a comment
-    deleteComment() {
-      PostCommentService.delete(this.currentComment.id)    
+
+        deleteComment() {
+        this.$confirm("Are you sure?").then(() => {
+      PostCommentService.delete(this.currentComment.id) 
+         
         .then(response => {
           console.log(response.data);
-          this.$router.push({ name: "posts" });
+          // this.$router.push({ name: "posts" });
+           this.$router.push({ name: "post", params: { id: this.currentComment.postId} });
         })
+
         .catch(e => {
           console.log(e);
         });
+        })
     }
   },
+
+
+  //   deleteComment() {
+  //     this.$confirm("Are you sure?").then(() => {
+  //     PostCommentService.delete(this.currentComment.id) 
+  //     // this.$router.go(-1)
+      
+  //     // :to="{name: 'post', params: { id: currentComment.postId}}"
+  //     })  
+  //       .then(() => {
+  //         //  this.$router.push({ name: "post", params: { id: this.currentComment.postId} });
+  //         console.log(response.data);
+           
+  //       })
+  //        .then(() => {
+  //          this.$router.push({ name: "post", params: { id: this.currentComment.postId} });
+  //         // console.log(response.data);
+           
+  //       })
+  //       .catch(e => {
+  //         console.log(e);
+  //       });
+  //   }
+  // },
 
   mounted() {
     this.message = '';    
     this.getCommentId(this.$route.params.id);
+    this.getComment()
   },
 
   computed: {

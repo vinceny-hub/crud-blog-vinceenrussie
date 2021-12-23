@@ -416,7 +416,9 @@ export default {
     getPost(id) {
       PostDataService.get(id)
         .then((response)=> {
+
           this.currentPost = response.data;
+         
           // console.log(response.data);
           console.log(this.currentPost.userId)
         })
@@ -515,14 +517,33 @@ export default {
         .catch(e => {
           console.log(e);
         });
-    }
-  },
+    },
+
  
-  
+  },
+
+// plum(){
+//    PostCommentService.getAll()
+//         .then(response => {
+          
+//           this.comments = response.data;
+         
+//           console.log(response.data);        
+//         })
+//         .catch(e => {
+//           console.log(e);
+//         });
+
+// },
+
+    
   mounted() {
+    // this.create()
+    this.getComment();
     this.message = '';
     this.getPost(this.$route.params.id);
-    this.getComment();
+    // this.plum()
+    
   },
   computed: {
     dataUser(){  return JSON.parse(localStorage.getItem("user"))

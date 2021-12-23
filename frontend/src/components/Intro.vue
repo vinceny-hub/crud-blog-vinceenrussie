@@ -117,7 +117,7 @@ h4{
   animation-name: slidein;
   animation-duration: 3.5s;
   animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in;
   
 
   /* margin-right: 10px; */
@@ -131,6 +131,7 @@ h4{
   0% 
   {
     scale: 500%;
+     transform-origin: top right;
     transform: rotate(-0deg) translateX(15px) translateY(-1000px);
   }
   /* 50%{
@@ -138,10 +139,58 @@ h4{
   } */
   70%{
      scale: 100%;
+     transform-origin: top right;
      transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
   }
-  97%{
-     transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
+  /* 75% {
+    transform-origin: top right;
+    transform: rotate(-7deg) translateX(6px) translateY(-23.5px);
+    
+    } */
+    /* 80% {
+    transform-origin: top right;
+    transform: rotate(-2deg) translateX(6px) translateY(-23.5px);
+     
+   
+    } */
+    /* 85% {
+    transform-origin: top right;
+    transform: rotate(-15deg) translateX(6px) translateY(-23.5px);
+
+   
+    } */
+      /* 85% {
+    transform-origin: top right;
+    transform: rotate(-5deg) translateX(6px) translateY(-23.5px);
+
+   
+    } */
+       /* 87% {
+    transform-origin: top right;
+    transform: rotate(-15deg) translateX(6px) translateY(-23.5px);
+    
+   
+    } */
+  
+  80%{
+      transform-origin: top right;
+     transform: rotate(-7deg) translateX(6px) translateY(-23.5px);
+  }
+   87.5%{
+      transform-origin: top right;
+     transform: rotate(-27deg) translateX(6px) translateY(-23.5px);
+  }
+  90%{
+      transform-origin: top right;
+     transform: rotate(-20deg) translateX(6px) translateY(-23.5px);
+  }
+   95.5%{
+      transform-origin: top right;
+     transform: rotate(-27deg) translateX(6px) translateY(-23.5px);
+  }
+  97.5%{
+      transform-origin: top right;
+     transform: rotate(-25deg) translateX(6px) translateY(-23.5px);
   }
   to {
     transform-origin: top right;

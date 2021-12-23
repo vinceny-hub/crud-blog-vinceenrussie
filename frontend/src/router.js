@@ -5,7 +5,7 @@ import Router from 'vue-router';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import Post from './components/Post.vue';
-// import Post from './components/Post.vue';
+import PostsList from './components/PostsList.vue';
 import Home from './components/Body.vue';
 import Page from './views/Page.vue';
 
@@ -40,6 +40,11 @@ export const router = new Router({
     path: '/post/:id',
     name: 'post',
     component: Post
+  },
+  {
+    path: '/posts',
+    name: 'posts-list',
+    component: PostsList
   },
     {
       path: '/profile',

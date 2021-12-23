@@ -73,10 +73,16 @@
                   <!-- </div>   -->
                    <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
                   <div class="btn-container onRight">
-                  <button class="btn btn-secondary mr-2" @click="cancelled()"> Cancel </button>
+                  <button class="btn btn-secondary mr-2" @click="cancelled()"> Retour </button>
                   <button class="btn btn-warning mr-2" type="submit"  @click="editPost"> Supprimer l'article </button>
-                  <button class="btn btn-primary " type="submit"  @click="uploadImage"> Envoyer le nouvel article </button>                  
+                  <button class="btn btn-primary " type="submit"  @click="uploadImage"> Envoyer le nouveau paragraphe </button>
+                                   
                   </div>
+                   <div class="btn-container onRight">
+                     <router-link :to="{name: 'home'}">
+                    <button class="btn btn-primary onRight " type="submit"> Envoyer l'article </button> 
+                     </router-link>
+                   </div>
                   <!-- <div class="btn-container">
                   <button class="btn btn-secondary mr-2" @click="cancelled()"> Cancel </button>
                   </div> -->
@@ -324,10 +330,10 @@ export default {
         // UpLoadFilesService.upload(formData)
         PostCommentService.create(formData)
          .then(response => {
-          
+          this.getComment()
           console.log(response.data);
        
-          this.retrievePosts();
+          // this.retrievePosts();
       
          })
     },

@@ -24,17 +24,19 @@
 
                 <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id=""> 
                  <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updatePhoto()"> update </button>
-
+                  
+                 <button class="btn btn-secondary mr-2" @click="$router.go(-1)"> Retour </button>
+                  
               <!-- <div v-if="!editing"> <h5><strong>{{ currentComment.descriptionPhoto }}</strong></h5></div>  -->
                <!-- <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updateComment">  {{editing? 'Update':'Modify'}} </button>
               <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
               <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" v-else type="text"  class="form-control" id="description" v-model="currentComment.description"/> -->
             </div>                                              <!-- edit, cancel and upload button. This is accesssible if current user is user whom made post or administrator-->
-            <!-- <img v-if="dataUser.id == currentComment.userId || showAdminBoard" class="card-ico" src="../img/titi1.png" alt="icon titi">
+            <!-- <img v-if="dataUser.id == currentComment.userId || showAdminBoard" class="card-ico" src="../img/titi1.png" alt="icon titi"> -->
             <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="editPost(currentComment)"> {{editing? 'Update':'Modify'}} </button>
             <button v-show="!editing" class="btn btn-secondary mr-2 float-right" @click="$router.go(-1)"> Back </button>   
             <button v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-secondary mr-2 float-right" @click="cancel()"> Cancel </button>
-            <button  v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="badge badge-danger mr-2" @click="deleteComment"> Delete </button>      -->
+            <button  v-show="editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="badge badge-danger mr-2" @click="deleteComment"> Delete </button>     
           </div>
         </div>
       </div>
@@ -170,7 +172,7 @@ export default {
         .then(response => {
           console.log(response.data);
           this.message = 'The post was updated successfully!';
-          this.$router.push({ name: "posts" });
+          // this.$router.push({ name: "posts" });
         })
         .catch(e => {
           console.log(e);
@@ -190,7 +192,7 @@ export default {
         .then(() => {
           // console.log(response.data);
           this.message = 'The post was updated successfully!';
-          this.$router.push({ name: "posts" });
+          // this.$router.push({ name: "posts" });
              
         })
         .catch(e => {

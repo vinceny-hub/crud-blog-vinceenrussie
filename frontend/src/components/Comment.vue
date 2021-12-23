@@ -16,17 +16,26 @@
                 </div>                            
               </div>                                                 <!-- get comment if editing -->
               <!-- <div v-if="!editing"> <h5><strong>{{ currentComment.description }}</strong></h5></div>  -->
-               <textarea-autosize placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control " id="" v-model="currentComment.description"/>
-               <div class="btn-container onRight">
-               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updateComment()"> update </button>
+               <div class="onLeft">
+               <label class="">Paragraphe</label>
                </div>
-               <textarea-autosize placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.descriptionPhoto"/>
-                <div class="btn-container onRight">
-               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success float-right" @click="updateComment()"> update </button>
+               <textarea-autosize placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control " id="" v-model="currentComment.description"/>
+               <div class="btn-container onRight">
+               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
+               </div>
+                <div class="onLeft">
+               <label class="">Légende photo</label>
                 </div>
+               <textarea-autosize placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.descriptionPhoto"/>
+                <div class="btn-container onRight">
+               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
+                </div>
+                 <div class="onLeft">
+                <label class="">Image</label>
+                 </div>
                 <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id=""> 
                  <div class="btn-container onRight">
-                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updatePhoto()"> update </button>
+                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updatePhoto()"> Envoyer </button>
                  </div>
                  <!-- <button class="btn btn-secondary mr-2" @click="$router.go(-1)"> Retour </button> -->
                   
@@ -293,6 +302,12 @@ export default {
     margin-bottom: 30px;
     margin-left: 100px;
 } 
+.onLeft{
+ text-align: start;
+ /* margin-top: 30px;
+ margin-bottom: 30px;     */
+
+}
 
 .aPost {
     width: 100%;

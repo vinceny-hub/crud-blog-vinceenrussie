@@ -19,7 +19,8 @@ export default {
 </script>
 
 <style>
-.header-logo {   
+.header-logo {  
+   z-index: 1; 
    position: fixed;
    text-align: left;
    padding-top: 10px;

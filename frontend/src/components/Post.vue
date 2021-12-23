@@ -38,7 +38,9 @@
                                                            
                     <div>
                       <div class="card card-shadow card-margin">
-                         <label class="" for="file"><strong>Titre de l'article</strong></label>
+                        <div class="onLeft">
+                         <label class="" for="file"><strong>Modifier le titre de l'article</strong></label>
+                        </div>
                         <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentPost.title"/>
                   <!-- <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.description"/>
                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Titre de l'article" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="currentPost.descriptionPhoto"/>
@@ -51,15 +53,27 @@
                     
                     <div class="card card-shadow card-margin">
                     <div>
+                      <div class="onLeft">
+                    <strong class="">
                     <label class="" for="file">Ajouter un paragraphe</label>
-                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Nouveau paragraphe" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.description"/>
+                    </strong>
+                      </div>
+                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.description"/>
                     </div>
                     <div>
+                      <div class="onLeft">
+                      <strong>
                       <label class="" for="file">Ajouter une description photo</label>
-                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Légende de la photographie" ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.descriptionPhoto"/>
+                      </strong>
+                      </div>
+                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.descriptionPhoto"/>
                     </div>
                    <div>
-                   <label class="form-control" for="file">Ajouter une photo</label>
+                     <div class="onLeft">
+                    
+                   <label class="l" for="file"> <strong>Ajouter une photo</strong></label>
+                   
+                     </div>
                    <input type="file" ref="file" @change="onSelect" class="form-control" id="">
                    </div>
                     </div>
@@ -622,6 +636,12 @@ export default {
     margin-left: 100px; 
     /* box-shadow: 5px 5px 5px #091f43; */
 } 
+.onLeft{
+ text-align: start;
+ /* margin-top: 30px;
+ margin-bottom: 30px;     */
+
+}
 .pink{
   border: 1px solid  #091f43;
   color:  #091f43;

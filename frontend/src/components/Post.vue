@@ -77,7 +77,9 @@
                    <input type="file" ref="file" @change="onSelect" class="form-control" id="">
                    </div>
                     </div>
-                      <div class="card card-shadow card-margin" v-for="comment in comments" :key="comment.id">
+                   
+                      <div v-show="currentPost.id == comment.postId" class="card card-shadow card-margin" v-for="comment in comments" :key="comment.id">
+                         <!-- <div v-if="currentPost.id == comment.postId"> -->
                      <div  class="paragrapheEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
                    <div class="descriptionPhotoEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
                   <img v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
@@ -87,6 +89,7 @@
                      </div>
                    </router-link>
                   </div>
+                    <!-- </div> -->
 
 
                    <!-- <div class="card card-shadow card-margin" v-for="comment in comments" :key="comment.id">

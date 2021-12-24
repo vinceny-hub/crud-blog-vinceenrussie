@@ -53,7 +53,7 @@ export default {
     animation-timing-function: ease-in-out;
 }
 .vinceenrussie{
-  margin-top: 50px;
+  /* margin-top: 45px; */
   text-align: center;
   margin-bottom: 0px;
    text-shadow: black 0.1em 0.1em 0.2em;

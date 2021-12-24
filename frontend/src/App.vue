@@ -21,39 +21,64 @@
               </router-link>
             <!-- </li> -->
             <!-- <li v-if="showAdminBoard" class="nav-item">  -->
-              <router-link v-if="showAdminBoard" to="/admin" class="">Admin Board</router-link>
+              <!-- <router-link v-if="showAdminBoard" to="/admin" class="">Admin </router-link> -->
             <!-- </li> -->
             <!-- <li v-if="showModeratorBoard" class="nav-item">  -->
-              <router-link v-if="showModeratorBoard" to="/mod" class="">Moderator Board</router-link>
+              <!-- <router-link v-if="showModeratorBoard" to="/mod" class="">Modo </router-link> -->
             <!-- </li>        
             <div v-if="!currentUser" class="navbar-nav">
               <li class="nav-item"> -->
-                <router-link v-if="!currentUser" to="/register" class=""><font-awesome-icon icon="user-plus" />Sign Up </router-link>
+
+
+
+                <!-- <router-link v-if="!currentUser" to="/register" class=""><font-awesome-icon icon="user-plus" />Sign Up </router-link> -->
+
               <!-- </li>
               <li class="nav-item"> -->
-                <router-link v-if="!currentUser" to="/login" class=""><font-awesome-icon icon="sign-in-alt" />Login </router-link>
+
+
+                <!-- <router-link v-if="!currentUser" to="/login" class=""><font-awesome-icon icon="sign-in-alt" />Login </router-link> -->
+
+
               <!-- </li>
             </div>       -->
             <!-- <li v-if="currentUser" class="navbar-nav"> -->
               <!-- <li class="nav-item"> -->
-                <router-link v-if="currentUser" to="/profile" class="">
+                <!-- <router-link v-if="currentUser" to="/profile" class="">
                   <font-awesome-icon icon="user" />
-                  {{ currentUser.username }}
-                </router-link>
+                  {{ currentUser.username.slice(0,5) }}
+                </router-link> -->
                <!-- </li> -->
               <!-- <li class="nav-item"> -->
-                <a class="" v-if="currentUser" href @click.prevent="logOut">
+                <!-- <a class="" v-if="currentUser" href @click.prevent="logOut">
                   <font-awesome-icon icon="sign-out-alt" />LogOut
-                </a>
+                </a> -->
               <!-- </li>-->
             <!-- </div> -->
           <!-- </ul>
         </div> --> 
               <!-- <router-link to="/login" class="nav-link"><font-awesome-icon icon="sign-in-alt" />Login </router-link> -->
               <router-link to="/"> Home </router-link> |
-              <router-link v-if="showAdminBoard" to="/about"> Edit </router-link>
-              <router-link v-if="showAdminBoard" to="/posts"> Create </router-link>
+              <router-link to="/about"> About </router-link>
+              <!-- <router-link v-if="showAdminBoard" to="/posts"> Create </router-link> -->
           
+          </nav>
+          <nav class="navBoard">
+             <!-- <router-link v-if="showAdminBoard" to="/about"> Edit </router-link> -->
+             <div>
+              <router-link v-if="currentUser" to="/profile" class="">
+                  <font-awesome-icon icon="user" />
+                  {{ currentUser.username.slice(0,5) }}
+                </router-link>
+                
+                <router-link v-if="!currentUser" to="/register" class=""><font-awesome-icon icon="user-plus" /> SignUp </router-link>
+               <router-link v-if="!currentUser" to="/login" class=""><font-awesome-icon icon="sign-in-alt" /> Login </router-link>
+
+               <router-link v-if="showAdminBoard" to="/admin" class="">Admin-Board </router-link>
+               <router-link v-if="showModeratorBoard" to="/mod" class="">Moderator-Board </router-link>
+              <router-link v-if="showAdminBoard" to="/posts"> Create </router-link>
+               <a class="" v-if="currentUser" href @click.prevent="logOut"><font-awesome-icon icon="sign-out-alt" />LogOut </a>
+             </div>
           </nav>
                
                   
@@ -120,10 +145,18 @@
       <div class="container">
       <router-view />
     </div>
-    <footer id="sticky-footer" class="py-4  text-white-50">
-      <div  id="commentArea" class="container text-center">
-        <small>Copyright  &copy;  <img class="foot-img" src="./img/titiCage.png" alt="footer logo titi"></small> 
-      </div>
+    <footer id="sticky-footer" class=" text-white-50">
+      <div class="item flag1">  Copyright  &copy; <img class="foot-img" src="./img/vincelarge3.jpg" alt="footer logo titi"></div>
+      <div class="item flag2"> </div>
+      <!-- <div class="item flag2">  Copyright  &copy; <img class="foot-img" src="./img/vincelarge3.jpg" alt="footer logo titi"></div> -->
+      <div class="item flag3"> </div>
+      <!-- <div  id="" class="text-center">
+        <div class="item"> 1</div>
+        <div class="item">
+        Copyright  &copy;  <img class="foot-img" src="./img/vincelarge3.jpg" alt="footer logo titi">
+        </div>
+         <div class="item">3 </div>
+      </div> -->
     </footer>
   </div>   
 </template>
@@ -178,11 +211,12 @@ export default {
 
 
 nav{
-  margin-top: 10px;
-  margin-bottom: 30px;
+  /* margin-top: 30px; */
+  /* margin-bottom: 50px; */
 }
 
 .navbar-brand img {
+
   height: 50px;
   
 }
@@ -196,13 +230,15 @@ nav{
 }
 
 .foot-img{
-  width: 35px;
-  height: 32.5px;
-  border-radius: 50%;
-  margin-left: 25px;
+  /* width: 35px; */
+  
+  height: 66.66px;
+  border-radius: 5%;
+  margin-left: 0px;
 }
 footer{  
-  background-color:#091f43;  
+  /* margin-top: 100px; */
+  background-color: rgb(29, 29, 180);
   bottom:0;
   width:100%;
 }
@@ -290,7 +326,7 @@ body{
   height: 300px;
    /* margin-left: auto;
   margin-right: auto;  */
-
+   box-shadow: 10px 7px 10px black;
   /* background-size:  900px 300px; */
    /* border: 5px solid red;  */
    border: 5px solid white; 
@@ -354,12 +390,25 @@ a{
 /* position: absolute; */
 /* width:10%; */
 /* margin-left: 697px; */
-margin-left:497px;
+margin-left:707px;
 margin-top: -37px;
 font-family:'Hungaria';
 /* border: 5px solid black; */
  /* border: 5px solid lightgray;  */
 /* background-color: black; */
+
+}
+.navBoard{
+  width: 900px;
+  height: 37.5px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family:'Hungaria';
+  margin-top: 15px;
+  /* position: absolute; */
+  /* margin-top: -20px; */
+  /* margin-bottom: -40px; */
+  text-align: center;
 
 }
 
@@ -373,6 +422,33 @@ a:hover{
 
 .header-menu a:hover {
   color: #a43b26;
+}
+
+.flag{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  border: 1px solid black;
+}
+.item{
+   /* width: 33.3333%; */
+   /* height: auto; */
+   border: 1px solid black;
+}
+.flag1{
+height: 33.33px;
+background-color: whitesmoke;
+}
+.flag2{
+  height: 33.33px;
+background-color: rgb(29, 29, 180);
+}
+.flag3{
+height: 33.33px;
+background-color: #a43b26;
+}
+footer{
+ line-height: 100px;
 }
  /* .titi_bloc{
   display: table-cell;

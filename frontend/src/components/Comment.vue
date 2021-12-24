@@ -338,8 +338,9 @@ li{
    width: 100%;
 }
 .gedf-main{  
-   margin-bottom: 200px;  
-   /* box-shadow: 10px 7px 10px #091f43; */
+   /* margin-bottom: 200px;   */
+   box-shadow: 10px 7px 10px black;
+   border: solid 2px lightgrey;
 }
 .marginBottomButton{
   margin-bottom: 30px;

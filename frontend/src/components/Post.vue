@@ -105,14 +105,17 @@
                   <!-- </div>   -->
                    <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
                   <div class="btn-container onRight">
-                  <button class="btn btn-secondary mr-2" @click="cancelled()"> Retour </button>
-                  <button class="btn btn-warning mr-2" type="submit"  @click="editPost"> Supprimer l'article </button>
-                  <button class="btn btn-primary " type="submit"  @click="uploadImage"> Envoyer le nouveau paragraphe </button>
+                  <button class="btn btn-secondary mr-2"  v-show="!editing" @click="cancelled()"> Retour </button>
+                   <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="btnC" class="btn btn-secondary mr-2 float-right marginRightButton" @click="cancel()"> Cancel </button>
+                <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button>
                                    
+                  <button class="btn btn-warning mr-2" type="submit" v-show="!editing"  @click="editSupprimer"> Supprimer l'article </button>
+                  <button class="btn btn-primary " type="submit" v-show="!editing"   @click="uploadImage"> Envoyer le nouveau paragraphe </button>
+                   
                   </div>
                    <div class="btn-container onRight">
                      <router-link :to="{name: 'home'}">
-                    <button class="btn btn-primary onRight " type="submit"> Envoyer l'article </button> 
+                    <button class="btn btn-primary onRightEnvoyerArticle" v-show="!editing"  type="submit"> Envoyer l'article </button> 
                      </router-link>
                    </div>
                   <!-- <div class="btn-container">
@@ -210,9 +213,9 @@
                  
                   <button v-show="editing" v-if="currentPost.imageUrl" class="btn btn-success mr-2 float-right" type="submit" @click="uploadImage(currentPost)"> Upload </button>
                 <button v-show="!editing" class="btn btn-secondary mr-2 float-right" @click="cancelled()"> Back </button>      -->
-                <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="btnC" class="btn btn-secondary mr-2 float-right marginRightButton" @click="cancel()"> Cancel </button>
+                <!-- <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="btnC" class="btn btn-secondary mr-2 float-right marginRightButton" @click="cancel()"> Cancel </button>
                 <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button>
-                 
+                  -->
                 
                 <div class="post-heading">
                   <div class="float meta">
@@ -231,9 +234,7 @@
                             </div>
                           </div>
                         </div> --> 
-                        <br>
-                        <br>
-                        <br>
+                       
                         <!-- <div class="postCard">  -->
                            <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">        -->
                           <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" type="text"   class="form-control" id="description" autofocus v-model="comment.description"/> -->
@@ -480,6 +481,17 @@ export default {
     }      
     console.log(this.editing)  
     },
+
+      editSupprimer(){    
+      this.editing = this.editing == true?false:true    
+      this.hide()
+        if(this.editing== false){
+            // this.$router.push({ name: "comment" });
+        // this.updatePost()
+        
+    }      
+    console.log(this.editing)  
+    },
     // cancelled 
     cancelled(){
        this.show()
@@ -683,10 +695,15 @@ li{
   object-fit: contain;
 }
  .card-shadow{
-    box-shadow: 10px 7px 10px #091f43;
+    box-shadow: 10px 7px 10px black;
  }
  .gedf-main{
-  margin-bottom: 100px;
+   /* padding-bottom: 66.6px; */
+  /* margin-bottom: 66.6px; */
+   border:lightgray 1px solid;
+   box-shadow: 10px 7px 10px black;
+
+  
 }
 .marginRightButton{ 
   margin-right: 30px;
@@ -723,6 +740,9 @@ li{
 .title-pos{
   margin-left:7px;
 }
+.imgBlog{
+  margin-bottom: 33.33px;
+}
 
 .inputBox{
 
@@ -740,6 +760,11 @@ margin-bottom: 30px;
  margin-bottom: 30px;    
 
 }
+ .onRightEnvoyerArticle{
+    text-align: end;
+ margin-top: 30px;
+ /* margin-bottom: 30px;   */
+ }
 .card-margin{
   padding: 20px 20px 20px 20px;
   margin-bottom: 30px;

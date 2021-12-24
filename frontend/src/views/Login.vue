@@ -3,12 +3,12 @@
     <div class="card card-container">
       <img
         id="profile-img"
-        src=""
+        src="../img/vincelarge3.jpg"
         class="profile-img-card"
       />
       <form name="form" @submit.prevent="handleLogin">
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">Nom d'utilisateur</label>
           <input
             v-model="user.username"
             v-validate="'required'"
@@ -23,7 +23,7 @@
           >Username is required!</div>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Mot de passe</label>
           <input
             v-model="user.password"
             v-validate="'required'"
@@ -131,12 +131,12 @@ label {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 }
 .profile-img-card {
-  width: 96px;
+  /* width: 96px; */
   height: 96px;
   margin: 0 auto 10px;
   display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+  /* -moz-border-radius: 50%; */
+  /* -webkit-border-radius: 50%; */
+  /* border-radius: 50%; */
 }
 </style>

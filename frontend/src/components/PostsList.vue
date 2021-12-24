@@ -10,8 +10,10 @@
               <div class="form-group">
                 <h1 class="" for="message">Créer un article</h1>
                 <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description1" autofocus  placeholder="What are you thinking?"/> -->
-                <label for="">Titre du nouvel article</label>
-                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.title" autofocus  placeholder="Écrire le titre de l'article ici..."/>
+                <div class="onLeft">
+                <label for="" class="labelTitre">Titre du nouvel article</label>
+                </div>
+                <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.title" autofocus  placeholder="Texte ici..."/>
                 <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/> -->
                 <!-- <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description" autofocus  placeholder="Titre du nouvel article"/>
                 <textarea-autosize ref="myTextarea" :min-height="75" :max-height="350" type="text" class="form-control" id="description" required v-model="post.description2" autofocus  placeholder="Titre du nouvel article"/>
@@ -477,6 +479,7 @@ export default {
   width:100%;
   height: 100%;
   object-fit: contain;
+   box-shadow: 10px 7px 10px black;
 }
 /* .title-img{
   margin-top: 15px;
@@ -486,7 +489,7 @@ export default {
   border-radius: 50%;
 } */
 .gedf-main{
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
 .comment {
     width: 80%;
@@ -544,6 +547,9 @@ li{
   font-family:Verdana;
  
 
+}
+.labelTitre{
+color: lightgray;
 }
 .mini_logo_pos{
 float: left;

@@ -1,8 +1,11 @@
 <template>
+<div class="container-fluid">
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="col-md-8 gedf-main-home">
          <section><!--présentation des derniers articles du blog-->
 
 
-  <h2 class="posts">Tous les posts</h2>
+  <h2 class="posts">Tous les articles</h2>
 
             <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse(-1)" :key="post.id">
     
@@ -96,6 +99,9 @@
 
   
 </section>
+      </div>
+    </div>
+</div>
 
 </template>
 
@@ -443,6 +449,9 @@ a:visited{
 
 } */
 
+.gedf-main-home{
+  margin-bottom: 66.6px;
+}
 p{
   color: white;
   width: 600px;
@@ -497,6 +506,12 @@ text-align: left;
   margin-right: auto; 
   margin-bottom:17px; 
 }
+/* .img-contain{
+  width:100%;
+  height: 100%;
+  object-fit: contain;
+   box-shadow: 10px 7px 10px black;
+} */
 
 
 .titreBlog{
@@ -523,6 +538,9 @@ text-align: left;
   display: flex;
   /* border: 5px solid red; */
   border: 5px solid lightgray; 
+ 
+   box-shadow: 10px 7px 10px black;
+
   display: flex;
   overflow: hidden;
   margin-top: -15px;

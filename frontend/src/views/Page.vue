@@ -156,9 +156,7 @@
                             </div>
                           </div>
                         </div> --> 
-                        <br>
-                        <br>
-                        <br>
+                       
                         <div class="postCard"> 
                            <!-- <input  v-show="dataUser.id == currentPost.userId && currentPost.imageUrl || showAdminBoard" type="file" ref="file" @change="onSelect" class="" id="">        -->
                           <!-- <textarea-autosize placeholder="Type something here..." ref="myTextarea" :min-height="30" :max-height="350" type="text"   class="form-control" id="description" autofocus v-model="comment.description"/> -->

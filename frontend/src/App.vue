@@ -276,6 +276,8 @@ h2{
   /* background-color:rgb(33, 33, 33); */
   /* background-color: rgb(25, 25, 25); */
   color: #2c3e50;
+  overflow: hidden;
+  padding-top: 15px;
 
  
 }

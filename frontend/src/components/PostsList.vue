@@ -2,7 +2,7 @@
 <template>
 
   <div class="container-fluid">
-    <div class="row h-100 justify-content-center align-items-center">
+    <div class="h-100 justify-content-center row-personnalised align-items-center">
       <div class="col-md-8 gedf-main">
         <div class="" v-if="!submitted">
           <div class="box-header-body-input">          
@@ -31,9 +31,9 @@
           </div>
         </div>       
         <div class="">          
-        <div class="d-inline-flex p-2 post_title_margin"> 
+        <!-- <div class="d-inline-flex p-2 post_title_margin"> 
         <img class="" src="" alt="">        
-        </div>
+        </div> -->
         <section>
           <h2 class="posts">Éditer les articles :</h2>
             <div class="postsDB"  @dblclick="editPost(index, post)" v-for="(post, index) in posts.slice().reverse()" :key="post.id">    
@@ -449,7 +449,7 @@ export default {
   border-bottom: none;
 } */
 .post_title_margin{
-  margin-top: 25px;
+  /* margin-top: 25px; */
 }
 #posts-tab{
   border: 1px solid #e1e1e1;
@@ -488,9 +488,9 @@ export default {
   margin-bottom: 0px;
   border-radius: 50%;
 } */
-.gedf-main{
-  /* margin-bottom: 100px; */
-}
+/* .gedf-main{
+  margin-bottom: 100px;
+} */
 .comment {
     width: 80%;
     overflow: hidden;
@@ -499,6 +499,12 @@ export default {
     margin-left: 100px;
     /* box-shadow: 5px 5px 5px #091f43;   */
 } 
+
+.row-personnalised{
+  margin-left: -25px;
+  margin-right: -25px;
+}
+
 .aPost {
     width: 100%;
     min-height: px;

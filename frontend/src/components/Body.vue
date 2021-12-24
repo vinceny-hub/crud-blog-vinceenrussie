@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid">
-    <div class="row h-100 justify-content-center align-items-center">
+    <div class="row-personnalised h-100 justify-content-center align-items-center">
       <div class="col-md-8 gedf-main-home">
          <section><!--présentation des derniers articles du blog-->
 
@@ -402,6 +402,10 @@ h1{
   color: lightgray; 
  
 }
+.gedf-main{
+  margin-left: auto;
+  margin-right: auto;
+}
 .posts{
   color: lightgray;
   font-size: 30px;
@@ -451,6 +455,8 @@ a:visited{
 
 .gedf-main-home{
   margin-bottom: 66.6px;
+  margin-right: auto;
+  margin-left: auto;
 }
 p{
   color: white;

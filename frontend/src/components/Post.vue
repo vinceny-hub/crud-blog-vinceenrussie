@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="footer-post-list">
-      <div class="row h-100 justify-content-center align-items-center">    
+      <div class="h-100 justify-content-center row-personnalised align-items-center">    
         <div class="col-md-8 gedf-main card .post-comment ">   
           <div v-if="currentPost" class="card-body">
             <div class="">

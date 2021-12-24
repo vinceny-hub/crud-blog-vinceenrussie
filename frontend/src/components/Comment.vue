@@ -1,6 +1,6 @@
 <template>
   <div id="#top" class="container-fluid">
-    <div class="row h-100 justify-content-center align-items-center">
+    <div class="h-100 justify-content-center row-personnalised align-items-center">
       <div class="col-md-6 gedf-main card">
         <div v-if="currentComment" class="card-body">
           <h4>Modifier le paragraphe</h4>

@@ -63,7 +63,7 @@
               <!-- <router-link v-if="showAdminBoard" to="/posts"> Create </router-link> -->
           
           </nav>
-          <nav class="navBoard">
+          <nav class="navBoard header-logged">
              <!-- <router-link v-if="showAdminBoard" to="/about"> Edit </router-link> -->
              <div>
               <router-link v-if="currentUser" to="/profile" class="">
@@ -229,6 +229,11 @@ nav{
   float: left;
 }
 
+.row-personnalised{
+  margin-left: -25px;
+  margin-right: -25px;
+}
+
 .foot-img{
   /* width: 35px; */
   
@@ -387,6 +392,7 @@ a{
   text-decoration: none;
 }
 .header-menu {
+
 /* position: absolute; */
 /* width:10%; */
 /* margin-left: 697px; */
@@ -398,6 +404,13 @@ font-family:'Hungaria';
 /* background-color: black; */
 
 }
+ .header-logged :hover{
+  
+  text-decoration: unset;
+  color: #a43b26;
+
+ }
+
 .navBoard{
   width: 900px;
   height: 37.5px;
@@ -421,6 +434,7 @@ a:hover{
 }
 
 .header-menu a:hover {
+  text-decoration: unset;
   color: #a43b26;
 }
 

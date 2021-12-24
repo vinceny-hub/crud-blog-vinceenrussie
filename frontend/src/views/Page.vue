@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="footer-post-list">
-      <div class="row h-100 justify-content-center align-items-center">    
+      <div class="row-personnalised h-100 justify-content-center align-items-center">    
         <!-- <div class="col-md-8 gedf-main card .post-comment card-shadow">    -->
         <div class="col-md-8 gedf-main post-comment"> 
           <div v-if="currentPost" class="card-body">
@@ -431,6 +431,8 @@ export default {
 </script>
 
 <style>
+
+
 .width-box{
   width: 100%;  
 }
@@ -498,6 +500,11 @@ li{
 .textBox{
    width: 100%;
 }
+
+.gedf-main{
+  margin-right: auto;
+  margin-left: auto;
+}
 .gedf-main .post-comment{    
    margin-bottom: 30px;
 }
@@ -533,9 +540,10 @@ li{
   margin-right: 50px;
 }
 .footer-post-list{  
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; 
   bottom:0;
-  width:100%;
+  width:100%;  */
+
 }
 .title-img{
   margin-top: 15px;

@@ -1,7 +1,7 @@
 import Vue from 'vue';               // import of diverses libraries needed and base configuration of vuejs
 import App from './App.vue';
 // import router from './router';
-
+import Embed from 'v-video-embed'
 import VueSimpleAlert from "vue-simple-alert";
 
 
@@ -30,6 +30,7 @@ Vue.use(VeeValidate);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(TextareaAutosize)
 Vue.use(VueSimpleAlert);
+Vue.use(Embed)
 
 new Vue({
   router,

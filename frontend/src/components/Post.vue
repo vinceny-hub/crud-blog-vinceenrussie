@@ -68,6 +68,14 @@
                       </div>
                    <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.descriptionPhoto"/>
                     </div>
+                     <div>
+                      <div class="onLeft">
+                      <strong>
+                      <label class="" for="file">Ajouter une vidéo</label>
+                      </strong>
+                      </div>
+                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Vidéo URL ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.videoUrl"/>
+                    </div>
                    <div>
                      <div class="onLeft">
                     
@@ -82,6 +90,7 @@
                          <!-- <div v-if="currentPost.id == comment.postId"> -->
                      <div  class="paragrapheEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
                    <div class="descriptionPhotoEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
+                   <video-embed v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.videoUrl"></video-embed>
                   <img v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
                    <router-link :to="{name: 'comment', params: { id: comment.id }}">
                         <div class="btn-container onRight">
@@ -281,7 +290,7 @@ export default {
         message: '',
         comment: {      
           id: null,
-         
+          videoUrl:"",
           // title: "",
           description: "",
           // userId: "",
@@ -350,6 +359,7 @@ export default {
     },
 
     uploadImage() {
+       
       let dataUser = JSON.parse(localStorage.getItem("user"))
       const formData = new FormData();
       // if (this.image !== null || "") {
@@ -358,6 +368,7 @@ export default {
         formData.append("username", dataUser.username,);
          formData.append("description", this.comment.description || '',);
            formData.append("descriptionPhoto", this.comment.descriptionPhoto || '',);
+           formData.append("videoUrl", this.comment.videoUrl || '',);
 
         //  descriptionPhoto
           formData.append("u", this.currentUser.id,);
@@ -365,9 +376,11 @@ export default {
       //  description: this.currentPost.description,
         // UpLoadFilesService.upload(formData)
         PostCommentService.create(formData)
+       
          .then(response => {
           this.getComment()
           console.log(response.data);
+
        
           // this.retrievePosts();
       
@@ -530,6 +543,7 @@ export default {
        var data = {    
        title: this.currentPost.title,
        description: this.comment.description,
+       videoUrl : this.comment.videoUrl
       //  description2: this.currentPost.description2,
       //  description3: this.currentPost.description3,
        

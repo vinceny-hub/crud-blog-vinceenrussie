@@ -117,7 +117,8 @@ export default {
       },
         currentComment:"",
         comments:[],
-        comment: {        
+        comment: {  
+        videoURL:"",      
         id: null,
         title: "",
         description: "",

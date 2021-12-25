@@ -48,7 +48,7 @@ exports.createComment = (req, res, next) => {
       // title: req.body.title,
       description: req.body.description,
       descriptionPhoto: req.body.descriptionPhoto,
-      // description3: req.body.description3,
+      videoUrl: req.body.videoUrl,
       // userId: req.body.id,
       // username:  req.body.username,
       // published: req.body.published ? req.body.published : false
@@ -232,7 +232,7 @@ exports.findOne = (req, res) => {
 //   }
 exports.update = (req, res) => {
     const id = req.params.id;
-    if (req.body.description != null){ 
+    if (req.body.description != null || req.body.descriptionPhoto != null || req.body.videoUrl != null ){ 
 
 Comment.update(req.body, {
   where: { id : id }

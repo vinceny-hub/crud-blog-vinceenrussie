@@ -28,12 +28,15 @@ module.exports = {
     //     },
   
     description: {
-      type: Sequelize.STRING(255)
+      type: Sequelize.STRING(1024)
     },
     descriptionPhoto: {
-      type: Sequelize.STRING(255)
+      type: Sequelize.STRING(512)
     },
     imageUrl: { 
+      type: Sequelize.STRING(99),
+    },
+    videoUrl: {
       type: Sequelize.STRING(99),
     },
   

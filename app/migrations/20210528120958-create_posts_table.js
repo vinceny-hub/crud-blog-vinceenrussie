@@ -14,24 +14,24 @@ module.exports = {
       type: Sequelize.STRING(255),
       },
 
-    imageUrl: { 
-      type: Sequelize.STRING(99),
-    },
+    // imageUrl: { 
+    //   type: Sequelize.STRING(99),
+    // },
     // imageUrl2: { 
     //   type: Sequelize.STRING(99),
     // },
-    description: {
-      // allowNull: false,
-      type: Sequelize.STRING(255),
-      },  
-      description2: {
-        // allowNull: false,
-        type: Sequelize.STRING(255),
-        },
-        description3: {
-          // allowNull: false,
-          type: Sequelize.STRING(255),
-          },
+    // description: {
+    //   // allowNull: false,
+    //   type: Sequelize.STRING(255),
+    //   },  
+      // description2: {
+      //   // allowNull: false,
+      //   type: Sequelize.STRING(255),
+      //   },
+        // description3: {
+        //   // allowNull: false,
+        //   type: Sequelize.STRING(255),
+        //   },
       userId: {
         type: Sequelize.INTEGER(11),
       //   // references : { model : 'users', key:'id'},

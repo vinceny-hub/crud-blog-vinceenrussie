@@ -2,19 +2,19 @@ module.exports = (sequelize, Sequelize) => {
     const Comment = sequelize.define("comments", {
     
       imageUrl: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(99)
       },
-      // imageUrl2: {
-      //   type: Sequelize.STRING
-      // },
+      videoUrl: {
+        type: Sequelize.STRING(99)
+      },
       // imageUrl3: {
       //   type: Sequelize.STRING
       // },
       description: {
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING(1024)
       },
       descriptionPhoto: {
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING(512)
       },
 
      

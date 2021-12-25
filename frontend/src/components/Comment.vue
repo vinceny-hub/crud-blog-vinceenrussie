@@ -30,6 +30,10 @@
                 <div class="btn-container onRight">
                <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
                 </div>
+                <textarea-autosize placeholder="Vidéo Url ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.videoUrl"/>
+                <div class="btn-container onRight">
+               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
+                </div>
                  <div class="onLeft">
                 <label class="">Image</label>
                  </div>
@@ -183,7 +187,8 @@ export default {
  updateComment() {
         var data = {    
        description: this.currentComment.description,
-       descriptionPhoto: this.currentComment.descriptionPhoto
+       descriptionPhoto: this.currentComment.descriptionPhoto,
+       videoUrl: this.currentComment.videoUrl
        
        }
        

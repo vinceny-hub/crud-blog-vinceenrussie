@@ -33,6 +33,7 @@
                      <div class="" v-for="comment in comments" :key="comment.id">
                    <div  class="paragraphe" v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
                    <div class="descriptionPhoto" v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
+                  <video-embed v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.videoUrl"></video-embed>
                   <img v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
                   </div>
                     

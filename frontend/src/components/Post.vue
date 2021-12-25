@@ -112,7 +112,7 @@
                    <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="btnC" class="btn btn-secondary mr-2 float-right marginRightButton" @click="cancel()"> Cancel </button>
                 <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button>
                                    
-                  <button class="btn btn-warning mr-2" type="submit" v-show="!editing"  @click="editSupprimer"> Supprimer l'article </button>
+                  <button class="btn btn-warning mr-2" type="submit" v-show="!editing" :key="currentPost.id"  @click="editSupprimer"> Supprimer l'article </button>
                   <button class="btn btn-primary " type="submit" v-show="!editing"   @click="uploadImage"> Envoyer le nouveau paragraphe </button>
                    
                   </div>
@@ -550,21 +550,41 @@ export default {
         });
     },
     // delete post
-    deletePost() {
-       PostDataService.delete(this.currentPost.id)      
-        .then(()=> {         
-          // PostCommentService.delete(this.currentPost.id)   
-          // console.log(response.data);         
-          this.$router.push({ name: "posts" })
-          .then(() => {
-          // location.reload()
-          })
+
+      deletePost() {
+        this.$confirm("Are you sure?").then(() => {
+     PostDataService.delete(this.currentPost.id)  
          
+        .then(response => {
+          console.log(response.data);
+          // this.$router.push({ name: "posts" });
+          this.$router.push({ name: "posts" })
         })
+
         .catch(e => {
           console.log(e);
         });
+        })
     },
+  
+
+    // deletePost() {
+      
+    //    PostDataService.delete(this.currentPost.id)      
+    //     .then(()=> {         
+    //       // PostCommentService.delete(this.currentPost.id)   
+    //       // console.log(response.data);  
+    //       this.$router.push({ name: "post", params: { id: this.currentComment.postId} });       
+    //       this.$router.push({ name: "posts" })
+    //       .then(() => {
+    //       // location.reload()
+    //       })
+         
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
 
  
   },

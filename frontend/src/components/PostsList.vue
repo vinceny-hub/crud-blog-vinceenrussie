@@ -285,16 +285,16 @@ export default {
         });     
     },
       // delete a post
-    deletePost() {    
-      PostDataService.delete(this.currentPost.id)
-        .then(response => {
-          console.log(response.data);
-          this.retrievePosts();        
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    },
+    // deletePost() {    
+    //   PostDataService.delete(this.currentPost.id)
+    //     .then(response => {
+    //       console.log(response.data);
+    //       this.retrievePosts();        
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
       // get all posts
     retrievePosts() {
       // console.log()
@@ -406,6 +406,34 @@ export default {
       this.$store.dispatch('auth/logout');
       this.$router.push('/login');
     },
+
+    //   getPost() {
+    //   PostDataService.getAll()
+    //     .then((response)=> {
+
+    //       this.post = response.data;
+         
+    //       // console.log(response.data);
+    //       console.log(this.post.userId)
+    //     })
+    //     .catch(e => {
+    //       console.log(e);
+    //     });
+    // },
+
+        getPost(id) {
+      PostDataService.get(id)
+        .then((response)=> {
+
+          this.post = response.data;
+         
+          // console.log(response.data);
+          console.log(this.post.userId)
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
     // retrieveAllPosts(){
       
     //   this.retrievePosts()
@@ -414,11 +442,18 @@ export default {
 
     // }
   },
+
+  // beforeMount(){
+  // this.retrievePosts()
+  // },
    
     mounted() {
+      // this.refreshList()
+      // this.getPost()
+      this.getComment()
       this.retrievePosts()
       this.retrieveAllUsers()
-      this.getComment()
+     
       // this.retrieveAllPosts()
      
   }        

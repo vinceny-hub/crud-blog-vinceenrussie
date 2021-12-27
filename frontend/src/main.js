@@ -3,6 +3,9 @@ import App from './App.vue';
 // import router from './router';
 import Embed from 'v-video-embed'
 import VueSimpleAlert from "vue-simple-alert";
+import VueCoreVideoPlayer from 'vue-core-video-player'
+import Media from '@dongido/vue-viaudio'
+import VideoPlayer from 'vue-videojs7'
 
 
 
@@ -25,7 +28,9 @@ import {
 library.add(faHome, faUser, faUserPlus, faSignInAlt, faSignOutAlt);
 
 Vue.config.productionTip = false;
-
+Vue.use(VideoPlayer)
+Vue.use(Media)
+Vue.use(VueCoreVideoPlayer)
 Vue.use(VeeValidate);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(TextareaAutosize)

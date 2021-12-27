@@ -4,8 +4,15 @@
       <div class="h-100 justify-content-center row-personnalised align-items-center">    
         <div class="col-md-8 gedf-main card .post-comment ">   
           <div v-if="currentPost" class="card-body">
+              <!-- <video id="videoElement" width="600px" controls poster="velocity-thumbnail.jpg"
+  @canplay="updatePaused" @playing="updatePaused" @pause="updatePaused">
+      <source src="../../../img/3.mp4" type="video/mp4" media="all and (max-width:680px)"> 
+     
+      <p>Sorry, there's a problem playing this video. Please try using a different browser.</p>
+  </video> -->
             <div class="">
               <div class="d-inline-flex p-0"> 
+              
                    <!-- <div class="d-inline-flex p-2 post_title_margin">  -->
                      <!-- <img class="title-img" src="" alt=""> -->
                      <!-- <h4 class="title-pos">{{currentPost.title}}</h4>-->
@@ -52,6 +59,14 @@
                       </div>
                     
                     <div class="card card-shadow card-margin">
+                      <!-- <div> -->
+                        <!-- <button v-if=" !(editingImage || editingVideo || editingLink)" class="btn btn-success mr-4" type="submit" @click="editTexte">  {{editingTexte? 'Annuler':'Ajouter paragraphe'}} </button> -->
+                        <!-- <button  v-if="editingParagraphe && editTexte" class="btn btn-success mr-4" type="submit" @click="editParagraphe, editTexte"> Texte </button> -->
+                          <!-- <button  v-if=" !(editingTexte || editingVideo || editingLink)" class="btn btn-success mr-4" type="submit" @click="editImage">  {{editingImage? 'Annuler':'Ajouter photo'}} </button>
+                            <button  v-if=" !(editingImage || editingVideo || editingTexte)"  class="btn btn-success mr-4" type="submit" @click="editLink">{{editingLink? 'Annuler':'Lien Youtube'}} </button>
+                              <button    v-if=" !(editingImage || editingTexte || editingLink)" class="btn btn-success mr-4" type="submit" @click="editVideo">{{editingVideo? 'Annuler':'Ajouter Video'}} </button> -->
+                      <!-- </div> -->
+                   
                     <div>
                       <div class="onLeft">
                     <strong class="">
@@ -60,7 +75,8 @@
                       </div>
                    <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.description"/>
                     </div>
-                    <div>
+                                    
+                    <div v-if="editingImage || editingLink || editingVideo">
                       <div class="onLeft">
                       <strong>
                       <label class="" for="file">Ajouter une description photo</label>
@@ -68,30 +84,65 @@
                       </div>
                    <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.descriptionPhoto"/>
                     </div>
-                     <div>
+                     <div v-if="editingLink && (!editingImage || !editingVideo)">
                       <div class="onLeft">
                       <strong>
-                      <label class="" for="file">Ajouter une vidéo</label>
+                      <label class="" for="file">Ajouter une vidéo Youtube</label>
                       </strong>
                       </div>
-                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Vidéo URL ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.videoUrl"/>
+                   <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Vidéo URL ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.youtubeUrl"/>
                     </div>
-                   <div>
+                     <div v-if="editingVideo && (!editingImage || !editingLink)">
+                     <div class="onLeft">
+                    
+                   <label class="l" for="file"> <strong>Ajouter une vidéo</strong></label>
+                   
+                     </div>
+                   <input type="file" ref="fileVideo" @change="onSelectVideo" class="form-control" id="">
+                   </div>
+                   <div v-if="editingImage && (!editingLink || !editingVideo)">
                      <div class="onLeft">
                     
                    <label class="l" for="file"> <strong>Ajouter une photo</strong></label>
                    
                      </div>
                    <input type="file" ref="file" @change="onSelect" class="form-control" id="">
+                  
                    </div>
+                   <div class="onLowRight">
+                     <button  v-if=" !(editingTexte || editingVideo || editingLink)" class="btn btn-success mr-4" type="submit" @click="editImage">  {{editingImage? 'Annuler':'Ajouter photo'}} </button>
+                     <button  v-if="editingImage" class="btn btn-primary" type="submit"  @click="uploadImage"> Envoyer </button>
+                  
+                            <button  v-if=" !(editingImage || editingVideo || editingTexte)" :key="currentPost.id" class="btn btn-success mr-4" type="submit" @click="editLink">{{editingLink? 'Annuler':'Lien Youtube'}} </button>
+                             <button  v-if="editingLink" class="btn btn-primary" type="submit" @click="uploadLink"> Envoyer </button>
+                              <button    v-if=" !(editingImage || editingTexte || editingLink)" class="btn btn-success mr-4" type="submit" @click="editVideo">{{editingVideo? 'Annuler':'Ajouter Video'}} </button>
+                               <button  v-if="editingVideo" class="btn btn-primary" type="submit" @click="uploadVideo"> Envoyer </button>
+                         </div>
+                          <div class="onLowRight">
+                      <button v-if=" !(editingImage || editingVideo || editingLink)" class="btn btn-primary mr-4" type="submit" @click="uploadParagraphe">  {{editingTexte? 'Annuler':'Envoyer'}} </button>
+                    </div>
+                    <!-- <div class="onRight">
+                    <button  v-if=" !(editingTexte || editingVideo || editingLink)" class="btn btn-success mr-4" type="submit" @click="editImage">  {{editingImage? 'Annuler':'Ajouter photo'}} </button>
+                   </div> -->
                     </div>
                    
                       <div v-show="currentPost.id == comment.postId" class="card card-shadow card-margin" v-for="comment in comments" :key="comment.id">
                          <!-- <div v-if="currentPost.id == comment.postId"> -->
                      <div  class="paragrapheEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
                    <div class="descriptionPhotoEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
-                   <video-embed v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.videoUrl"></video-embed>
-                  <img v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
+                   <video-embed v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.youtubeUrl"></video-embed>
+                   
+                   
+                    <video id="videoElement"  v-if="(currentPost.id == comment.postId) && comment.videoUrl" class="img-contain" controls poster="velocity-thumbnail.jpg"
+                    @canplay="updatePaused" @playing="updatePaused" @pause="updatePaused" type="video/mp4" media="all and (max-width:680px)"> 
+                    <source :src="comment.videoUrl" type="video/mp4" media="all and (max-width:680px)">      
+                    <p>Sorry, there's a problem playing this video. Please try using a different browser.</p>
+                    </video>
+
+
+                   <img v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
+
+
                    <router-link :to="{name: 'comment', params: { id: comment.id }}">
                         <div class="btn-container onRight">
                      <button class="btn btn-success" type="submit"> Editer le paragraphe </button>
@@ -118,11 +169,12 @@
                    <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
                   <div class="btn-container onRight">
                   <button class="btn btn-secondary mr-2"  v-show="!editing" @click="cancelled()"> Retour </button>
-                   <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="btnC" class="btn btn-secondary mr-2 float-right marginRightButton" @click="cancel()"> Cancel </button>
-                <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button>
+                  <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button>
+                   <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="" class="btn btn-secondary" @click="cancel()"> Cancel </button>
+                
                                    
-                  <button class="btn btn-warning mr-2" type="submit" v-show="!editing" :key="currentPost.id"  @click="editSupprimer"> Supprimer l'article </button>
-                  <button class="btn btn-primary " type="submit" v-show="!editing"   @click="uploadImage"> Envoyer le nouveau paragraphe </button>
+                  <button class="btn btn-warning" type="submit" v-show="!editing" :key="currentPost.id"  @click="editSupprimer"> Supprimer l'article </button>
+                  <!-- <button class="btn btn-primary " type="submit" v-show="!editing"   @click="uploadImage"> Envoyer le nouveau paragraphe </button> -->
                    
                   </div>
                    <div class="btn-container onRight">
@@ -278,6 +330,7 @@
 
 <script>
 import PostCommentService from "../services/PostCommentService";
+import VideoDataService from "../services/VideoDataService";
 import PostDataService from "../services/PostDataService";
 import UpLoadFilesService from "../services/UpLoadFilesService";
 export default {
@@ -290,6 +343,7 @@ export default {
         message: '',
         comment: {      
           id: null,
+          youtubeUrl:"",
           videoUrl:"",
           // title: "",
           description: "",
@@ -301,10 +355,41 @@ export default {
       postId: "",   
       isDisplay:true,
       currentPost: null,
-      editing: false,      
+      editing: false, 
+       editingParagraphe: false,
+       editingTexte: false, 
+        editingImage: false, 
+         editingLink: false, 
+          editingVideo: false,  
+      // paused:false, 
+      // play:true,
+       videoElement: null,
+    paused: null 
     };
   },
   methods: {
+
+
+ updatePaused(event) {
+      this.videoElement = event.target;
+      this.paused = event.target.paused;
+    },
+    play() {
+      this.videoElement.play();
+    },
+    pause() {
+      this.videoElement.pause();
+    },
+  
+    // Play(){
+    //   this.play = true
+    // },
+    // Pause(){
+    //   this.paused = true
+    // },
+  
+      
+  
     // selected image file
      onSelect(e){     
       const file = this.$refs.file.files[0];
@@ -312,9 +397,10 @@ export default {
         console.log(e)
         // console.log(this.currentPost.imageUrl)        
     },
-      onSelect2(e){     
-      const file = this.$refs.file2.files[0];
-        this.currentPost.imageUrl = file;
+      onSelectVideo(e){     
+      const file = this.$refs.fileVideo
+      .files[0];
+        this.currentPost.videoUrl = file;
         console.log(e)
         // console.log(this.currentPost.imageUrl)        
     },
@@ -358,6 +444,41 @@ export default {
         });
     },
 
+
+     uploadParagraphe() {
+       
+      let dataUser = JSON.parse(localStorage.getItem("user"))
+      const formData = new FormData();
+      // if (this.image !== null || "") {
+        // formData.append("file", this.currentPost.imageUrl);
+        formData.append("id", dataUser.id);
+        formData.append("username", dataUser.username,);
+         formData.append("description", this.comment.description || '',);
+           formData.append("descriptionPhoto", this.comment.descriptionPhoto || '',);
+           formData.append("youtubeUrl", this.comment.youtubeUrl || '',);
+
+        //  descriptionPhoto
+          formData.append("u", this.currentUser.id,);
+        formData.append("postId", this.currentPost.id,);
+      //  description: this.currentPost.description,
+        // UpLoadFilesService.upload(formData)
+        PostCommentService.create(formData)
+       
+         .then(response => {
+          this.resetInput()
+
+        
+
+          this.getComment()
+          console.log(response.data);
+          console.log();
+
+       
+          // this.retrievePosts();
+      
+         })
+    },
+
     uploadImage() {
        
       let dataUser = JSON.parse(localStorage.getItem("user"))
@@ -368,7 +489,7 @@ export default {
         formData.append("username", dataUser.username,);
          formData.append("description", this.comment.description || '',);
            formData.append("descriptionPhoto", this.comment.descriptionPhoto || '',);
-           formData.append("videoUrl", this.comment.videoUrl || '',);
+           formData.append("youtubeUrl", this.comment.youtubeUrl || '',);
 
         //  descriptionPhoto
           formData.append("u", this.currentUser.id,);
@@ -378,13 +499,136 @@ export default {
         PostCommentService.create(formData)
        
          .then(response => {
+          this.resetFile()
+
+        
+
           this.getComment()
           console.log(response.data);
+          console.log();
 
        
           // this.retrievePosts();
       
          })
+    },
+     uploadVideo() {
+       
+      let dataUser = JSON.parse(localStorage.getItem("user"))
+      const formData = new FormData();
+      // if (this.image !== null || "") {
+        formData.append("file", this.currentPost.videoUrl);
+        formData.append("id", dataUser.id);
+        formData.append("username", dataUser.username,);
+         formData.append("description", this.comment.description || '',);
+           formData.append("descriptionPhoto", this.comment.descriptionPhoto || '',);
+          //  formData.append("youtubeUrl", this.comment.youtubeUrl || '',);
+
+        //  descriptionPhoto
+          formData.append("u", this.currentUser.id,);
+        formData.append("postId", this.currentPost.id,);
+      //  description: this.currentPost.description,
+        // UpLoadFilesService.upload(formData)
+        VideoDataService.create(formData)
+       
+         .then(response => {
+          this.resetFileVideo()
+
+        
+
+          this.getComment()
+          console.log(response.data);
+          console.log();
+
+       
+          // this.retrievePosts();
+      
+         })
+    },
+    uploadLink() {
+       
+      let dataUser = JSON.parse(localStorage.getItem("user"))
+      const formData = new FormData();
+      // if (this.image !== null || "") {
+        // formData.append("file", this.currentPost.imageUrl);
+        formData.append("id", dataUser.id);
+        formData.append("username", dataUser.username,);
+         formData.append("description", this.comment.description || '',);
+           formData.append("descriptionPhoto", this.comment.descriptionPhoto || '',);
+           formData.append("youtubeUrl", this.comment.youtubeUrl || '',);
+
+        //  descriptionPhoto
+          formData.append("u", this.currentUser.id,);
+        formData.append("postId", this.currentPost.id,);
+      //  description: this.currentPost.description,
+        // UpLoadFilesService.upload(formData)
+        PostCommentService.create(formData)
+       
+         .then(response => {
+          this.resetInput()
+
+          // if(this.currentPost.imageUrl){
+         
+          // this.resetFile()
+
+          // }
+
+          this.getComment()
+          console.log(response.data);
+          console.log();
+
+       
+          // this.retrievePosts();
+      
+         })
+    },
+
+    
+    resetFile(){
+      this.$refs.file.value=null;  
+      this.comment.description="",
+      this.comment.descriptionPhoto="",
+      this.comment.youtubeUrl="",
+      this.editingTexte= false,
+      this.editingImage= false,
+      this.editingVideo= false,
+      this.editingLink= false
+      
+    },
+
+      resetFileVideo(){
+      this.$refs.fileVideo.value=null;  
+      this.comment.description="",
+      this.comment.descriptionPhoto="",
+      this.comment.youtubeUrl="",
+      this.editingTexte= false,
+      this.editingImage= false,
+      this.editingVideo= false,
+      this.editingLink= false
+      
+    },
+    resetInput(){
+
+       this.comment.description="",
+      this.comment.descriptionPhoto="",
+      this.comment.youtubeUrl="",
+      this.editingTexte= false,
+      this.editingImage= false,
+      this.editingVideo= false,
+      this.editingLink= false
+
+  // this.$refs.form.reset()
+  // this.dialog = false;
+  // this.imgSrc = ''
+  // this.fileName = ''
+  // this.imgUrl = ''
+  // this.file = '',
+    // this.$refs.file.value=null;
+  
+       
+      
+       this.file = null
+       
     },
 
       retrievePosts() {
@@ -487,6 +731,17 @@ export default {
       this.isDisplay = true
     },
     //edit a post
+     editParagraphe(){    
+      this.editingParagraphe = this.editingParagraphe == true?false:true    
+      this.hide()
+        // if(this.editing== false){
+        //     this.$router.push({ name: "comment" });
+        // this.updatePost()
+        
+    // }      
+    console.log(this.editingParagraphe)  
+    },
+
     editPost(){    
       this.editing = this.editing == true?false:true    
       this.hide()
@@ -496,6 +751,47 @@ export default {
         
     }      
     console.log(this.editing)  
+    },
+      editTexte(){    
+      this.editingTexte =  this.editingTexte == true?false:true 
+      this.hide()
+        // if(this.editingTexte== false){
+    //         this.$router.push({ name: "comment" });
+    //     // this.updatePost()
+        
+    // }      
+    console.log(this.editingTexte)  
+    },
+      editImage(){    
+      this.editingImage = this.editingImage == true?false:true  
+      this.hide()
+        if(this.editingImage == false){
+            this.comment.descriptionPhoto ="",
+            this.comment.imageUrl =""
+    //     // this.updatePost()
+        
+     }      
+    console.log(this.editingImage)  
+    },
+      editLink(){    
+      this.editingLink = this.editingLink == true?false:true 
+      this.hide()
+    if(this.editingImage == false){
+            this.comment.descriptionPhoto ="",
+            this.comment.youtubeUrl =""
+        
+     }      
+    console.log(this.editingLink)  
+    },
+      editVideo(){    
+      this.editingVideo =  this.editingVideo == true?false:true  
+      this.hide()
+    if(this.editingVideo == false){
+            this.comment.descriptionPhoto ="",
+            this.comment.youtubeUrl =""
+        
+     }      
+    console.log(this.editingVideo)  
     },
 
       editSupprimer(){    
@@ -543,7 +839,7 @@ export default {
        var data = {    
        title: this.currentPost.title,
        description: this.comment.description,
-       videoUrl : this.comment.videoUrl
+       youtubeUrl : this.comment.youtubeUrl
       //  description2: this.currentPost.description2,
       //  description3: this.currentPost.description3,
        
@@ -795,6 +1091,13 @@ margin-bottom: 30px;
  text-align: end;
  margin-top: 30px;
  margin-bottom: 30px;    
+
+}
+
+.onLowRight{
+ text-align: end;
+ margin-top: 15px;
+ margin-bottom: 15px;    
 
 }
  .onRightEnvoyerArticle{

@@ -48,7 +48,7 @@ exports.createComment = (req, res, next) => {
       // title: req.body.title,
       description: req.body.description,
       descriptionPhoto: req.body.descriptionPhoto,
-      videoUrl: req.body.videoUrl,
+      youtubeUrl: req.body.youtubeUrl,
       // userId: req.body.id,
       // username:  req.body.username,
       // published: req.body.published ? req.body.published : false
@@ -59,7 +59,7 @@ exports.createComment = (req, res, next) => {
       ...postObject,
 
       //répertoire images
-      imageUrl: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}` : null,
+      imageUrl: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}` : '',
       // imageUrl2: req.file ? `${req.protocol}://${req.get('host')}/images/${req.file.filename}` : 'http://localhost:3000/images/icon2.png',
       
     
@@ -232,7 +232,7 @@ exports.findOne = (req, res) => {
 //   }
 exports.update = (req, res) => {
     const id = req.params.id;
-    if (req.body.description != null || req.body.descriptionPhoto != null || req.body.videoUrl != null ){ 
+    if (req.body.description != null || req.body.descriptionPhoto != null || req.body.youtubeUrl != null ){ 
 
 Comment.update(req.body, {
   where: { id : id }
@@ -275,7 +275,18 @@ Comment.update(req.body, {
       })
       .then((message) => res.status(201).json({ message }))
       .catch((error) => res.status(500).json(error));
-      };
+      }
+      else{
+        Comment.update({
+          imageUrl: `${req.protocol}://${req.get("host")}/images/${
+          req.file.filename}`
+          },
+          { where: {id : id },
+          })
+          .then((message) => res.status(201).json({ message }))
+          .catch((error) => res.status(500).json(error));
+          }
+      
     })
 
   }

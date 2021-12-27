@@ -39,6 +39,9 @@ module.exports = {
     videoUrl: {
       type: Sequelize.STRING(99),
     },
+    youtubeUrl: {
+      type: Sequelize.STRING(99),
+    },
   
     createdAt: Sequelize.DATE,
     updatedAt: Sequelize.DATE  

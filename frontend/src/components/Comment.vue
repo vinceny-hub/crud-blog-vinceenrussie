@@ -16,6 +16,8 @@
                 </div>                            
               </div>                                                 <!-- get comment if editing -->
               <!-- <div v-if="!editing"> <h5><strong>{{ currentComment.description }}</strong></h5></div>  -->
+               
+                <div >
                <div class="onLeft">
                <label class="">Paragraphe</label>
                </div>
@@ -23,6 +25,10 @@
                <div class="btn-container onRight">
                <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
                </div>
+                </div>
+
+
+                 <div >
                 <div class="onLeft">
                <label class="">Légende photo</label>
                 </div>
@@ -30,17 +36,98 @@
                 <div class="btn-container onRight">
                <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
                 </div>
-                <textarea-autosize placeholder="Vidéo Url ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.videoUrl"/>
-                <div class="btn-container onRight">
-               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
-                </div>
-                 <div class="onLeft">
-                <label class="">Image</label>
+                 </div>
+
+
+
+                  <div >
+                  <div class="onLeft">
+                <label class=""> Photo </label>
                  </div>
                 <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id=""> 
                  <div class="btn-container onRight">
-                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updatePhoto()"> Envoyer </button>
+                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updatePhoto()"> Envoyer p </button>
                  </div>
+                  </div>
+
+                  <div >
+                  <div class="onLeft">
+                <label class=""> Youtube Url </label>
+                  </div>
+                <textarea-autosize placeholder="Vidéo Url ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.youtubeUrl"/>
+                 
+                <div class="btn-container onRight">
+               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
+                </div>
+                  </div>
+
+                <div >
+                <div class="onLeft">
+                <label class=""> Vidéo Url </label>
+                </div>
+                <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="fileVideo" @change="onSelectVideo" class="form-control" id=""> 
+                 <div class="btn-container onRight">
+                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateVideo()"> Envoyer </button>
+                 </div>
+                </div>
+
+
+
+
+                 <!-- <div v-if="!comment.description">
+               <div class="onLeft">
+               <label class="">Paragraphe</label>
+               </div>
+               <textarea-autosize placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control " id="" v-model="currentComment.description"/>
+               <div class="btn-container onRight">
+               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
+               </div>
+                </div>
+
+
+                 <div v-if="!comment.descriptionPhoto">
+                <div class="onLeft">
+               <label class="">Légende photo</label>
+                </div>
+               <textarea-autosize placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.descriptionPhoto"/>
+                <div class="btn-container onRight">
+               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
+                </div>
+                 </div>
+
+
+
+                  <div v-if="!comment.imageUrl">
+                  <div class="onLeft">
+                <label class=""> Photo </label>
+                 </div>
+                <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id=""> 
+                 <div class="btn-container onRight">
+                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updatePhoto()"> Envoyer p </button>
+                 </div>
+                  </div>
+
+                  <div v-if="!comment.youtubeUrl">
+                  <div class="onLeft">
+                <label class=""> Youtube Url </label>
+                  </div>
+                <textarea-autosize placeholder="Vidéo Url ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.youtubeUrl"/>
+                 
+                <div class="btn-container onRight">
+               <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateComment()"> Envoyer </button>
+                </div>
+                  </div>
+
+                <div v-if="!comment.videoUrl">
+                <div class="onLeft">
+                <label class=""> Vidéo Url </label>
+                </div>
+                <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="fileVideo" @change="onSelectVideo" class="form-control" id=""> 
+                 <div class="btn-container onRight">
+                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateVideo()"> Envoyer </button>
+                 </div>
+                </div> -->
+               
                  <!-- <button class="btn btn-secondary mr-2" @click="$router.go(-1)"> Retour </button> -->
                   
               <!-- <div v-if="!editing"> <h5><strong>{{ currentComment.descriptionPhoto }}</strong></h5></div>  -->
@@ -51,7 +138,7 @@
             <!-- <img v-if="dataUser.id == currentComment.userId || showAdminBoard" class="card-ico" src="../img/titi1.png" alt="icon titi"> -->
              <div class="btn-container onRight">
                <button v-show="!editing" class="btn btn-secondary mr-2" @click="$router.go(-1)"> Retour </button> 
-            <button  v-show="!editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-primary" @click="editPost(currentComment)"> Modifier </button>
+            <button  v-show="!editing" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-warning" @click="editPost(currentComment)"> Supprimer </button>
                
            
   
@@ -69,6 +156,7 @@
 
 <script>
 import PostCommentService from "../services/PostCommentService";
+import VideoDataService from "../services/VideoDataService";
 // import UpLoadFilesService from "../services/UpLoadFilesService";
 // import CommentPostService from "../services/CommentPostService";
 
@@ -95,12 +183,26 @@ export default {
   },
 
   methods: {
-      onSelect(e){     
+     onSelect(e){     
       const file = this.$refs.file.files[0];
         this.currentComment.imageUrl = file;
         console.log(e)
         // console.log(this.currentPost.imageUrl)        
     },
+
+         onSelectVideo(e){     
+      const file = this.$refs.fileVideo
+      .files[0];
+        this.currentComment.videoUrl = file;
+        console.log(e)
+        // console.log(this.currentPost.imageUrl)        
+    },
+    //     onSelectVideo(e){     
+    //   const file = this.$refs.file.files[0];
+    //     this.currentComment.videoUrl = file;
+    //     console.log(e)
+    //     // console.log(this.currentPost.imageUrl)        
+    // },
     // save a comment
     saveComment() {     
     //   let dataUser = JSON.parse(localStorage.getItem("user"))
@@ -188,7 +290,7 @@ export default {
         var data = {    
        description: this.currentComment.description,
        descriptionPhoto: this.currentComment.descriptionPhoto,
-       videoUrl: this.currentComment.videoUrl
+       youtubeUrl: this.currentComment.youtubeUrl
        
        }
        
@@ -213,6 +315,26 @@ export default {
         //  formData.append("description2", this.currentPost.description2,);
         //  formData.append("description3", this.currentComment.description3,);
      PostCommentService.updatePhoto(id, formData)
+        .then(() => {
+          // console.log(response.data);
+          this.message = 'The post was updated successfully!';
+          // this.$router.push({ name: "posts" });
+             
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+       updateVideo() {
+     const formData = new FormData();
+     let id = this.currentComment.id
+    //  formData.append("file", this.currentPost.imageUrl, this.currentPost.imageUrl.name);
+      formData.append("file", this.currentComment.videoUrl, this.currentComment.videoUrl.name);
+        //  formData.append("title", this.current.title,);
+        //  formData.append("description", this.currentPost.description,);
+        //  formData.append("description2", this.currentPost.description2,);
+        //  formData.append("description3", this.currentComment.description3,);
+     VideoDataService.updateVideo(id, formData)
         .then(() => {
           // console.log(response.data);
           this.message = 'The post was updated successfully!';

@@ -171,11 +171,11 @@
                    <!-- <input v-show="dataUser.id == currentPost.userId || showAdminBoard" type="file" ref="file" @change="onSelect" class="form-control" id="">  -->
                   <div class="btn-container onRight">
                   <button class="btn btn-secondary mr-2"  v-show="!editing" @click="cancelled()"> Retour </button>
-                  <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2" @click="deletePost()"> Delete </button>
+                  <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard" class="badge badge-danger mr-2"  :key="currentPost.id" @click="deletePost()"> Delete </button>
                    <button v-show="editing" v-if="dataUser.id == currentPost.userId  || showAdminBoard"  id="" class="btn btn-secondary" @click="cancel()"> Cancel </button>
                 
                                    
-                  <button class="btn btn-warning" type="submit" v-show="!editing" :key="currentPost.id"  @click="editSupprimer"> Supprimer l'article </button>
+                  <button class="btn btn-warning" type="submit" v-show="!editing"  @click="editSupprimer"> Supprimer l'article </button>
                   <!-- <button class="btn btn-primary " type="submit" v-show="!editing"   @click="uploadImage"> Envoyer le nouveau paragraphe </button> -->
                    
                   </div>

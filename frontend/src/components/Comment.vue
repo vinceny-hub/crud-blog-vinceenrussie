@@ -28,9 +28,9 @@
                 </div>
 
 
-                 <div >
+                 <div v-if="currentComment.descriptionPhoto" >
                 <div class="onLeft">
-               <label class="">Légende photo</label>
+               <label class="">Légende média</label>
                 </div>
                <textarea-autosize placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control" id="" v-model="currentComment.descriptionPhoto"/>
                 <div class="btn-container onRight">
@@ -40,17 +40,17 @@
 
 
 
-                  <div >
+                   <div v-if="currentComment.imageUrl" >
                   <div class="onLeft">
                 <label class=""> Photo </label>
                  </div>
                 <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="file" @change="onSelect" class="form-control" id=""> 
                  <div class="btn-container onRight">
-                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updatePhoto()"> Envoyer p </button>
+                 <button :disabled="!noImage" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updatePhoto()"> Envoyer </button>
                  </div>
                   </div>
 
-                  <div >
+                   <div v-if="currentComment.youtubeUrl" >
                   <div class="onLeft">
                 <label class=""> Youtube Url </label>
                   </div>
@@ -61,13 +61,13 @@
                 </div>
                   </div>
 
-                <div >
+                 <div v-if="currentComment.videoUrl" >
                 <div class="onLeft">
                 <label class=""> Vidéo Url </label>
                 </div>
                 <input  v-show="dataUser.id == currentComment.userId && !comment.imageUrl || showAdminBoard && !comment.imageUrl" type="file" ref="fileVideo" @change="onSelectVideo" class="form-control" id=""> 
                  <div class="btn-container onRight">
-                 <button v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateVideo()"> Envoyer </button>
+                 <button :disabled="!noVideo" v-if="dataUser.id == currentComment.userId || showAdminBoard" class="btn btn-success" @click="updateVideo()"> Envoyer </button>
                  </div>
                 </div>
 
@@ -175,10 +175,13 @@ export default {
           description: "",
           user_Id: "",
           username: "",
-          published: false
+          published: false,
+           
       },
         currentPost: null,      
-        editing: false,      
+        editing: false, 
+          noImage:false, 
+          noVideo:false
     };
   },
 
@@ -186,6 +189,9 @@ export default {
      onSelect(e){     
       const file = this.$refs.file.files[0];
         this.currentComment.imageUrl = file;
+        if( this.currentComment.imageUrl){
+        this.noImage = true
+      }
         console.log(e)
         // console.log(this.currentPost.imageUrl)        
     },
@@ -194,6 +200,9 @@ export default {
       const file = this.$refs.fileVideo
       .files[0];
         this.currentComment.videoUrl = file;
+         if( this.currentComment.videoUrl){
+        this.noVideo = true
+      }
         console.log(e)
         // console.log(this.currentPost.imageUrl)        
     },
@@ -296,6 +305,7 @@ export default {
        
       PostCommentService.update(this.currentComment.id, data)
         .then(response => {
+          alert("Updated")
           console.log(response.data);
           this.message = 'The post was updated successfully!';
           // this.$router.push({ name: "posts" });
@@ -316,6 +326,7 @@ export default {
         //  formData.append("description3", this.currentComment.description3,);
      PostCommentService.updatePhoto(id, formData)
         .then(() => {
+          alert("Updated")
           // console.log(response.data);
           this.message = 'The post was updated successfully!';
           // this.$router.push({ name: "posts" });

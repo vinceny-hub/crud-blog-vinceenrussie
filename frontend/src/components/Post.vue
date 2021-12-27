@@ -79,7 +79,7 @@
                     <div v-if="editingImage || editingLink || editingVideo">
                       <div class="onLeft">
                       <strong>
-                      <label class="" for="file">Ajouter une description photo</label>
+                      <label class="" for="file">Ajouter une légende média</label>
                       </strong>
                       </div>
                    <textarea-autosize v-show="dataUser.id == currentPost.userId  || showAdminBoard " placeholder="Texte ici..." ref="myTextarea"  :min-height="30" :max-height="350"    class="form-control description" id="" v-model="comment.descriptionPhoto"/>
@@ -111,12 +111,12 @@
                    </div>
                    <div class="onLowRight">
                      <button  v-if=" !(editingTexte || editingVideo || editingLink)" class="btn btn-success mr-4" type="submit" @click="editImage">  {{editingImage? 'Annuler':'Ajouter photo'}} </button>
-                     <button  v-if="editingImage" class="btn btn-primary" type="submit"  @click="uploadImage"> Envoyer </button>
+                     <button  :disabled="!noImage" v-if="editingImage" class="btn btn-primary" type="submit"  @click="uploadImage"> Envoyer </button>
                   
                             <button  v-if=" !(editingImage || editingVideo || editingTexte)" :key="currentPost.id" class="btn btn-success mr-4" type="submit" @click="editLink">{{editingLink? 'Annuler':'Lien Youtube'}} </button>
-                             <button  v-if="editingLink" class="btn btn-primary" type="submit" @click="uploadLink"> Envoyer </button>
+                             <button :disabled="!comment.youtubeUrl" v-if="editingLink" class="btn btn-primary" type="submit" @click="uploadLink"> Envoyer </button>
                               <button    v-if=" !(editingImage || editingTexte || editingLink)" class="btn btn-success mr-4" type="submit" @click="editVideo">{{editingVideo? 'Annuler':'Ajouter Video'}} </button>
-                               <button  v-if="editingVideo" class="btn btn-primary" type="submit" @click="uploadVideo"> Envoyer </button>
+                               <button :disabled="!noVideo" v-if="editingVideo" class="btn btn-primary" type="submit" @click="uploadVideo"> Envoyer </button>
                          </div>
                           <div class="onLowRight">
                       <button v-if=" !(editingImage || editingVideo || editingLink)" class="btn btn-primary mr-4" type="submit" @click="uploadParagraphe">  {{editingTexte? 'Annuler':'Envoyer'}} </button>
@@ -130,18 +130,20 @@
                          <!-- <div v-if="currentPost.id == comment.postId"> -->
                      <div  class="paragrapheEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
                    <div class="descriptionPhotoEdit" v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
-                   <video-embed v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.youtubeUrl"></video-embed>
+                   <video-embed v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.youtubeUrl">
+
+                   </video-embed>
                    
-                   
-                    <video id="videoElement"  v-if="(currentPost.id == comment.postId) && comment.videoUrl" class="img-contain" controls poster="velocity-thumbnail.jpg"
-                    @canplay="updatePaused" @playing="updatePaused" @pause="updatePaused" type="video/mp4" media="all and (max-width:680px)"> 
+                  
+                    <video id="videoElement"  v-if="(currentPost.id == comment.postId) && comment.videoUrl" class="video-preview-contain" controls> 
                     <source :src="comment.videoUrl" type="video/mp4" media="all and (max-width:680px)">      
                     <p>Sorry, there's a problem playing this video. Please try using a different browser.</p>
                     </video>
+                 
 
-
+                    
                    <img v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
-
+                   
 
                    <router-link :to="{name: 'comment', params: { id: comment.id }}">
                         <div class="btn-container onRight">
@@ -364,7 +366,10 @@ export default {
       // paused:false, 
       // play:true,
        videoElement: null,
-    paused: null 
+    paused: null,
+    noImage:false,
+    noVideo:false,
+    // noLink:false,
     };
   },
   methods: {
@@ -394,6 +399,9 @@ export default {
      onSelect(e){     
       const file = this.$refs.file.files[0];
         this.currentPost.imageUrl = file;
+         if( this.currentPost.imageUrl){
+        this.noImage = true
+      }
         console.log(e)
         // console.log(this.currentPost.imageUrl)        
     },
@@ -401,6 +409,9 @@ export default {
       const file = this.$refs.fileVideo
       .files[0];
         this.currentPost.videoUrl = file;
+         if( this.currentPost.videoUrl){
+        this.noVideo = true
+      }
         console.log(e)
         // console.log(this.currentPost.imageUrl)        
     },
@@ -987,6 +998,10 @@ export default {
  margin-bottom: 30px;     */
 
 }
+.video-preview-contain{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 .pink{
   border: 1px solid  #091f43;
   color:  #091f43;
@@ -1026,6 +1041,7 @@ li{
   width:100%;
   height: 100%;
   object-fit: contain;
+  /* margin-top: 10px; */
 }
  .card-shadow{
     box-shadow: 10px 7px 10px black;

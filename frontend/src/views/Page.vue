@@ -33,8 +33,14 @@
                      <div class="" v-for="comment in comments" :key="comment.id">
                    <div  class="paragraphe" v-if="currentPost.id == comment.postId"> <strong> {{comment.description}} </strong> </div>
                    <div class="descriptionPhoto" v-if="currentPost.id == comment.postId"> <strong> {{comment.descriptionPhoto}} </strong> </div>
-                  <video-embed v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.videoUrl"></video-embed>
+                 
                   <img v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.imageUrl" > 
+                  <video-embed v-if="currentPost.id == comment.postId" class="img-contain" :src="comment.videoUrl"></video-embed>
+                  <video id="videoElement"  v-if="(currentPost.id == comment.postId) && comment.videoUrl" class="video-contain" controls poster="velocity-thumbnail.jpg"
+                    @canplay="updatePaused" @playing="updatePaused" @pause="updatePaused" type="video/mp4" media="all and (max-width:680px)"> 
+                    <source :src="comment.videoUrl" type="video/mp4" media="all and (max-width:680px)">      
+                    <p>Sorry, there's a problem playing this video. Please try using a different browser.</p>
+                    </video>
                   </div>
                     
                       <!-- <img class="img-contain" :src="currentPost.imageUrl" >  -->
@@ -216,6 +222,18 @@ export default {
     };
   },
   methods: {
+
+
+     updatePaused(event) {
+      this.videoElement = event.target;
+      this.paused = event.target.paused;
+    },
+    play() {
+      this.videoElement.play();
+    },
+    pause() {
+      this.videoElement.pause();
+    },
     // selected image file
      onSelect(e){     
       const file = this.$refs.file.files[0];
@@ -510,6 +528,12 @@ li{
 .img-contain{
   width:100%;
   height: 100%;
+  object-fit: contain;
+  margin-bottom: 30px;
+}
+.video-contain{
+  margin-top: -30px;
+  width: 100%;
   object-fit: contain;
   margin-bottom: 30px;
 }

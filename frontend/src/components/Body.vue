@@ -16,7 +16,17 @@
                   <!-- <div class="" v-if="post.id == comment.postId">                     -->
                      <div class="" v-for="comment in comments.slice()" :key="comment.id">                                  
                        <div class="" v-if="post.id == comment.postId"> 
-                        <img class="img-contain" :src="comment.imageUrl">
+                        <img v-if="comment.imageUrl" class="img-contain" :src="comment.imageUrl">
+                        <!-- <video id="videoElement" class="video-preview-contain" controls poster="velocity-thumbnail.jpg"
+                    @canplay="updatePaused" @playing="updatePaused" @pause="updatePaused" type="video/mp4" media="all and (max-width:680px)"> 
+                    <source :src="comment.videoUrl" type="video/mp4" media="all and (max-width:680px)">      
+                    <p>Sorry, there's a problem playing this video. Please try using a different browser.</p>
+                    </video> -->
+                          <video id="videoElement" class="video-preview-contain" controls
+                  > 
+                    <source :src="comment.videoUrl" type="video/mp4" media="all and (max-width:680px)">      
+                    <p>Sorry, there's a problem playing this video. Please try using a different browser.</p>
+                    </video>
                       </div>
                     </div>
                   <!-- </div> -->
@@ -531,6 +541,17 @@ text-align: left;
   font-size: 20px;
    text-shadow: black 0.1em 0.1em 0.2em;
  
+
+
+}
+.video-preview-contain{
+
+ 
+  width:100%;
+  height: 100%; 
+  object-fit: contain;
+  margin-top: auto;
+  margin-bottom: auto;
 
 
 }

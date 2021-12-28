@@ -1,11 +1,15 @@
 <template>
   <div id="app"> 
+      <TitreLogo/>
      <!-- <div id="nav"> -->
      <header>
        <FixLogo/>
         <div class="header-box">
         <!-- <FixLogo /> -->
-        <img class="imgHeader" src="./img/vincelarge3.jpg" alt="">
+        <!-- <img class="imgHeader" src="./img/vincelarge3.jpg" alt=""> -->
+        
+          <img class="imgHeader" src="./img/carteRussiaVierge.jpg" alt="">
+        
         </div>
           <!-- <div class="header-logo">
            
@@ -171,12 +175,14 @@
 // import Body from '@/components/Body.vue'
 import Intro from '@/components/Intro.vue'
 import FixLogo from '@/components/FixLogo.vue'
+import TitreLogo from '@/components/TitreLogo.vue'
 export default {
    components: {
     // Diaporama,
     // Body
     Intro,
-    FixLogo
+    FixLogo,
+    TitreLogo
    },
   name: "app",
   computed: {
@@ -251,7 +257,7 @@ footer{
 .border-nav{
   border-bottom: 1px solid #091f43 ;
 }
-.titi_title{
+/* .titre_title{
   padding-top: 5px;
   margin-left: 60px;
   font-weight: bold;
@@ -260,7 +266,7 @@ footer{
   font-family:Verdana;
  
 
-}
+} */
 h2{
    text-shadow: black 0.1em 0.1em 0.2em;
 }

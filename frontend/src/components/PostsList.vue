@@ -48,7 +48,14 @@
                   <!-- <div class="" v-if="post.id == comment.postId">                     -->
                      <div class="" v-for="comment in comments.slice()" :key="comment.id">                                  
                        <div class="" v-if="post.id == comment.postId"> 
-                        <img class="img-contain" :src="comment.imageUrl">
+                        <img  v-if="comment.imageUrl && !comment.videoUrl" class="img-contain" :src="comment.imageUrl.slice(0)">
+                                 <video  v-if="comment.videoUrl && !comment.imageUrl" id="videoElement" class="video-preview-contain" controls
+                  > 
+                    <source  :src="comment.videoUrl.slice(0)" type="video/mp4" media="all and (max-width:680px)">      
+                    <p>Sorry, there's a problem playing this video. Please try using a different browser.</p>
+                    </video>
+                        
+                        
                       </div>
                     </div>
                   <!-- </div> -->
@@ -56,7 +63,7 @@
                 <div class="conteneurImage">
                    <div class="" v-for="comment in comments" :key="comment.id">
                      <div class="" v-if="post.id == comment.postId"> 
-                  <p class="resumeBlog">{{ comment.description }}</p> 
+                  <p class="resumeBlog">{{ comment.description.slice(0).substring(0,300)+"..." }}</p> 
                      </div>
                    </div>
                 </div> 

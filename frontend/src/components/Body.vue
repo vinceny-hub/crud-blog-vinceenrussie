@@ -16,15 +16,15 @@
                   <!-- <div class="" v-if="post.id == comment.postId">                     -->
                      <div class="" v-for="comment in comments.slice()" :key="comment.id">                                  
                        <div class="" v-if="post.id == comment.postId"> 
-                        <img v-if="comment.imageUrl" class="img-contain" :src="comment.imageUrl">
+                        <img v-if="comment.imageUrl && !comment.videoUrl" class="img-contain" :src="comment.imageUrl.slice(0)">
                         <!-- <video id="videoElement" class="video-preview-contain" controls poster="velocity-thumbnail.jpg"
                     @canplay="updatePaused" @playing="updatePaused" @pause="updatePaused" type="video/mp4" media="all and (max-width:680px)"> 
                     <source :src="comment.videoUrl" type="video/mp4" media="all and (max-width:680px)">      
                     <p>Sorry, there's a problem playing this video. Please try using a different browser.</p>
                     </video> -->
-                          <video id="videoElement" class="video-preview-contain" controls
+                          <video  v-if="comment.videoUrl && !comment.imageUrl" id="videoElement" class="video-preview-contain" controls
                   > 
-                    <source :src="comment.videoUrl" type="video/mp4" media="all and (max-width:680px)">      
+                    <source  :src="comment.videoUrl.slice(0)" type="video/mp4" media="all and (max-width:680px)">      
                     <p>Sorry, there's a problem playing this video. Please try using a different browser.</p>
                     </video>
                       </div>
@@ -34,7 +34,7 @@
                 <div class="conteneurImage">
                    <div class="" v-for="comment in comments" :key="comment.id">
                      <div class="" v-if="post.id == comment.postId"> 
-                  <p class="resumeBlog">{{ comment.description }}</p> 
+                  <div class="resumeBlog"> {{ comment.description.slice(0).substring(0,300)+"..." }}</div> 
                      </div>
                    </div>
                 </div> 
@@ -583,7 +583,10 @@ text-align: left;
 
 
 .resumeBlog{
-
+  /* width: 25ch; */
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap; */
   width: 187px;
   height: 300px;
   font-size: 14px;

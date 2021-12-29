@@ -8,7 +8,7 @@
         <h1 class= "vinceenrussie">
          <div class="vinceFlex">
          <div class="v"><FONT face="Hungaria" class="v">V</FONT></div>
-           <div><FONT face="Territory">i</FONT> </div>
+           <div class="i"><FONT face="Territory">i</FONT> </div>
            <div class="nce"><FONT face="Hungaria" class= "nce">nce</FONT> </div>
          </div>
           <div class="e"><FONT face="Arial" class= "e"> en </FONT></div>
@@ -48,9 +48,10 @@ export default {
 
 .russie{
   margin-left:-7px;
-   /* animation-name: slideright; */
-   animation-duration: 2s;
+   animation-name:golden;
+   animation-duration: 5s;
     animation-timing-function: ease-in-out;
+
 }
 .vinceenrussie{
   /* margin-top: 45px; */
@@ -60,6 +61,7 @@ export default {
    display: flex;
    justify-content: center;
    vertical-align: middle;
+   
    
  }
  .vinceFlex{
@@ -104,30 +106,136 @@ h4{
 .v{
 	color:white;
   margin-top:-3.5px;
+   animation-name:golden;
+   animation-duration: 5s;
+    animation-timing-function: ease-in-out;
   
 }
 .nce{
 	color: white;
   margin-top:-3.5px;
+   animation-name:golden;
+   animation-duration: 5s;
+    animation-timing-function: ease-in-out;
 }
 .e{
+  z-index: 1;
+   animation-name:golden;
+   animation-duration: 5s;
+    animation-timing-function: ease-in-out;
   /* transform: translateY(-10px); */
   /* transform: rotate(-27deg) translateX(15px) translateY(-10px); */
 	color: rgb(29, 29, 180);
   /* animation-name: slidein; */
-  animation-duration: 3.5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in;
+  /* animation-duration: 3.5s; */
+  /* animation-fill-mode: forwards;
+  animation-timing-function: ease-in; */
    transform-origin: top right;
     transform: rotate(-27deg) translateX(6px) translateY(-23.5px);
   
 
   /* margin-right: 10px; */
 }
+
+.i{
+    animation-name:golden;
+   animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+}
 .titreIntro{
+  
   align-content: flex-start;
+  /* animation-name: fondu; */
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+  
   /* flex: ; */
 }
+
+@keyframes fondu {
+  0% 
+  {
+    z-index: 0;
+   margin-top:-125px;
+   opacity: 0%;
+  }
+   75% 
+  {
+     margin-top:-125px;
+    /* background-color: gold; */
+   opacity: 0%;
+  }
+    80% 
+  {
+     /* margin-top:-125px; */
+    /* background-color: gold; */
+   opacity: 0%;
+  }
+ 
+  to {
+    background-color:unset;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+   opacity: 100%;
+   /* text-shadow: ; */
+    
+   
+    }
+} 
+
+
+@keyframes golden {
+  0% 
+  {
+  color: rgb(47, 47, 47);
+  text-shadow: none ;
+  }
+   66.66% 
+  {
+    /* scale: 100%; */
+  color: rgb(47, 47, 47);
+  text-shadow: none ;
+  }
+  
+    /* 70% 
+  {
+   
+    color: gold;
+    
+  } */
+     /* 75% 
+  {
+   
+    color: gold;
+    
+  } */
+     75% 
+  {
+    font-size: 40px;
+    color: gold;
+    /* text-shadow: gold; */
+    
+  }
+     76% 
+  {
+   /* scale: 100.5%; */
+    color: rgb(255, 232, 102);
+    /* text-shadow: gold; */
+    
+  }
+ 
+    
+  to {
+     /* scale: 100%; */
+    text-shadow: black;
+    /* scale: 100%; */
+   color: unset;
+    
+   
+    }
+} 
+
 
 @keyframes slidein {
   0% 

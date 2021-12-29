@@ -51,9 +51,12 @@ export default {
 .russie{
     font-size: 55px;
   margin-left:-7px;
+  transform: translate(-100px);
+  
    animation-name: slideright;
    animation-duration: 2s;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 .vinceenrussie{
   /* margin-top: -75px; */
@@ -74,17 +77,18 @@ export default {
    vertical-align: middle;
    animation-name: slideleft;
    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in;
 
  }
  .enRussieFlexLogo{
-      /* transform: translateY(270px); */
- margin-right: 0px;
+transform: translateY(-17.5px); 
+ /* margin-right: 0px; */
  display: flex;
    justify-content: center;
    vertical-align: middle;
-   animation-name: slideleft;
-   animation-duration: 2s;
+   animation-name: slideFall;
+   animation-fill-mode: forwards;
+   animation-duration: 2.5s;
     animation-timing-function: ease-in-out;
  }
 
@@ -140,6 +144,7 @@ h4{
     margin-top:-3.5px;
 }
 .e{
+  z-index: 1;
     font-size: 45px;
    /* transform: translateY(225px);  */
   /* transform: rotate(-27deg) translateX(15px) translateY(-10px); */
@@ -246,8 +251,8 @@ h4{
 @keyframes slideleft {
   0% 
   {
-    scale: 500%;
-    transform: translate(-750px,-20px);
+    /* scale: 500%; */
+    transform: translate(-2000px,-20px);
     /* transform: translateY(-20px); */
   }
   /* 50%{
@@ -267,23 +272,64 @@ h4{
 @keyframes slideright {
   0% 
   {
-    scale: 500%;
-    transform: translate(750px, 20px);
+    /* scale: 500%; */
+     transform: translateX(-100px);
+      /* transform: translateY(20px); */
+    /* transform: translate(750px, 20px); */
     /* transform: translateX(750px) ;
     transform: translateY(20px); */
   }
   /* 50%{
      transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
-  }
-  97%{
-     transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
-  } */
+  }*/
+  /* 87%{
+      transform: translateX(-75px);
+  }  */
+   98%{
+      transform: translateX(-100px);
+  } 
+    /* 92%{
+      transform: translateX(-25px);
+  }  */
+    /* 97%{
+      transform: translateX(-100px);
+  }  */
+
   to {
+
     /* transform-origin: top right; */
-    transform: translateX(0px);
-    transform: translateY(20px);
+    /* transform: translateY(0px); */
+    transform: translate(0px);
+    /* transform: translateY(20px); */
      /* transform: rotate(-27deg) translateX(15px) translateY(-10px); */
    
+    }
+
+}
+
+@keyframes slideFall {
+  0% 
+  {
+  
+     transform: translateY(-17.5px);
+     
+  }
+ 
+  /* 87%{
+      transform: translateX(-75px);
+  } 
+   90%{
+      transform: translateX(-10px);
+  } */
+    99%{
+      transform: translateY(-17.5px);
+  }  
+   
+  to {
+
+    
+    transform: translateY(0px);
+    
     }
 
 }

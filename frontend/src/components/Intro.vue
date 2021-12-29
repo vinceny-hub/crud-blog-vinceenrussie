@@ -48,7 +48,7 @@ export default {
 
 .russie{
   margin-left:-7px;
-   animation-name: slideright;
+   /* animation-name: slideright; */
    animation-duration: 2s;
     animation-timing-function: ease-in-out;
 }
@@ -67,7 +67,7 @@ export default {
  display: flex;
    justify-content: center;
    vertical-align: middle;
-   animation-name: slideleft;
+   /* animation-name: slideleft; */
    animation-duration: 2s;
     animation-timing-function: ease-in-out;
 
@@ -114,10 +114,12 @@ h4{
   /* transform: translateY(-10px); */
   /* transform: rotate(-27deg) translateX(15px) translateY(-10px); */
 	color: rgb(29, 29, 180);
-  animation-name: slidein;
+  /* animation-name: slidein; */
   animation-duration: 3.5s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in;
+   transform-origin: top right;
+    transform: rotate(-27deg) translateX(6px) translateY(-23.5px);
   
 
   /* margin-right: 10px; */
@@ -200,22 +202,16 @@ h4{
     }
 }
 
-@keyframes slideleft {
+/* @keyframes slideleft {
   0% 
   {
     scale: 500%;
     transform: translateX(-750px) ;
   }
-  /* 50%{
-     transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
-  }
-  97%{
-     transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
-  } */
+ 
   to {
-    /* transform-origin: top right; */
+  
     transform: translateX(0px);
-     /* transform: rotate(-27deg) translateX(15px) translateY(-10px); */
    
     }
 }
@@ -225,19 +221,14 @@ h4{
     scale: 500%;
     transform: translateX(750px) ;
   }
-  /* 50%{
-     transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
-  }
-  97%{
-     transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
-  } */
+ 
   to {
-    /* transform-origin: top right; */
+   
     transform: translateX(0px);
-     /* transform: rotate(-27deg) translateX(15px) translateY(-10px); */
+    
    
     }
-}
+} */
 
 
 </style>

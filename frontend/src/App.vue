@@ -1,15 +1,16 @@
 <template>
   <div id="app"> 
-      <TitreLogo/>
+     
      <!-- <div id="nav"> -->
      <header>
        <FixLogo/>
         <div class="header-box">
+         
         <!-- <FixLogo /> -->
         <!-- <img class="imgHeader" src="./img/vincelarge3.jpg" alt=""> -->
         
           <img class="imgHeader" src="./img/carteRussiaVierge.jpg" alt="">
-        
+          <TitreLogo/>
         </div>
           <!-- <div class="header-logo">
            

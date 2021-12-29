@@ -49,14 +49,14 @@ export default {
 } */
 
 .russie{
-    font-size: 45px;
+    font-size: 55px;
   margin-left:-7px;
    animation-name: slideright;
    animation-duration: 2s;
     animation-timing-function: ease-in-out;
 }
 .vinceenrussie{
-  margin-top: -75px;
+  /* margin-top: -75px; */
   text-align: center;
   margin-bottom: 0px;
    text-shadow: black 0.1em 0.1em 0.2em;
@@ -66,7 +66,8 @@ export default {
    
  }
  .vinceFlexLogo{
-   /* transform: translateY(215px); */
+   transform: translateY(-20px);
+   margin-top: -2px;
  margin-right: 6px;
  display: flex;
    justify-content: center;
@@ -77,8 +78,8 @@ export default {
 
  }
  .enRussieFlexLogo{
-      transform: translateY(255px);
- margin-right: 6px;
+      /* transform: translateY(270px); */
+ margin-right: 0px;
  display: flex;
    justify-content: center;
    vertical-align: middle;
@@ -116,25 +117,27 @@ h4{
    /* text-shadow: black 0.1em 0.1em 0.2em; */
 }
 .v{
-    transform: translateY(225px);
-    font-size: 60px;
+    /* transform: translateY(225px); */
+    font-size: 75px;
 	color:black;
+    margin-top: -20px;
     
  
   
 }
 .i{
-     transform: translateY(244.25px);
-     font-size: 45px;
+     /* transform: translateY(244.25px); */
+     font-size: 57.5px;
 	color:  #a43b26;
-  /* margin-top:-3.5px; */
+  margin-top:1px;
+  margin-left: 3px;
 
 }
 .nce{
-     transform: translateY(244.25px);
-    font-size: 45px;
+     /* transform: translateY(244.25px); */
+    font-size: 57.5px;
 	color: white;
-  margin-top:-3.5px;
+    margin-top:-3.5px;
 }
 .e{
     font-size: 45px;
@@ -151,12 +154,19 @@ h4{
   /* margin-right: 10px; */
 }
 .titreIntro{
-  align-content: flex-start;
+  /* align-content: flex-start; */
   /* flex: ; */
 }
 .titreLogo{
     /* position: static; */
-    align-content: flex-start;
+    width: 100%;
+    height: 125px;
+    margin-left: -10px;
+    /* align-content: flex-start; */
+    /* margin-top: -125px; */
+    /* border: solid green 2px; */
+    /* transform: translateY(-125px); */
+    margin-top: -125px;
   
 }
 
@@ -237,7 +247,8 @@ h4{
   0% 
   {
     scale: 500%;
-    transform: translateX(-750px) ;
+    transform: translate(-750px,-20px);
+    /* transform: translateY(-20px); */
   }
   /* 50%{
      transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
@@ -248,6 +259,7 @@ h4{
   to {
     /* transform-origin: top right; */
     transform: translateX(0px);
+    transform: translateY(-20px);
      /* transform: rotate(-27deg) translateX(15px) translateY(-10px); */
    
     }
@@ -256,7 +268,9 @@ h4{
   0% 
   {
     scale: 500%;
-    transform: translateX(750px) ;
+    transform: translate(750px, 20px);
+    /* transform: translateX(750px) ;
+    transform: translateY(20px); */
   }
   /* 50%{
      transform: rotate(-0deg) translateX(6px) translateY(-23.5px);
@@ -267,6 +281,7 @@ h4{
   to {
     /* transform-origin: top right; */
     transform: translateX(0px);
+    transform: translateY(20px);
      /* transform: rotate(-27deg) translateX(15px) translateY(-10px); */
    
     }
@@ -274,7 +289,7 @@ h4{
 }
 
 .eLogo{
-    transform: translateY(225px);
+    /* transform: translateY(225px); */
 
 }
 

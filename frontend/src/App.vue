@@ -335,9 +335,12 @@ body{
   /* border: 5px solid red; */
 /* } */
 .imgHeader {   
-  
-  width: 900px;
-  height: 300px;
+  width: 90vw;
+  height: 30vw;
+  max-width: 900px;
+  max-height: 300px;
+  /* width: 900px;
+  height: 300px; */
    /* margin-left: auto;
   margin-right: auto;  */
    box-shadow: 10px 7px 10px black;
@@ -405,7 +408,8 @@ a{
 /* position: absolute; */
 /* width:10%; */
 /* margin-left: 697px; */
-margin-left:707px;
+/* margin-left:707px; */
+margin-left: 70vw;
 margin-top: -37px;
 font-family:'Hungaria';
 /* border: 5px solid black; */

@@ -1,7 +1,8 @@
 <template>
 <div class="container-fluid">
     <div class="row-personnalised h-100 justify-content-center align-items-center">
-      <div class="col-md-8 gedf-main-home">
+      <div class="container">
+      <!-- <div class="col-md-8 gedf-main-home"> -->
          <section><!--présentation des derniers articles du blog-->
 
 
@@ -581,12 +582,19 @@ text-align: left;
 
 }
 
+.conteneurImage{
+   width: 187px;
+  height: 300px;
+
+}
+
 
 .resumeBlog{
   /* width: 25ch; */
   /* overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: wrap; */
+  text-overflow: ellipsis; */
+  /* white-space: wrap;  */
+  /* overflow-wrap: break-word; */
   width: 187px;
   height: 300px;
   font-size: 14px;

@@ -3,7 +3,8 @@
     <div class="footer-post-list">
       <div class="row-personnalised h-100 justify-content-center align-items-center">    
         <!-- <div class="col-md-8 gedf-main card .post-comment card-shadow">    -->
-        <div class="col-md-8 gedf-main post-comment"> 
+        <!-- <div class="col-md-8 gedf-main post-comment">  -->
+          <div class="gedf-main post-comment">
           <div v-if="currentPost" class="card-body">
             <!-- <div class="">
               <div class="d-inline-flex p-0"> 

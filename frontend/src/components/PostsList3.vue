@@ -407,10 +407,10 @@ export default {
   color: white;
 } 
 .box-header-body-input{ 
-  box-shadow: 10px 7px 10px#091f43;
+  /* box-shadow: 10px 7px 10px#091f43; */
 }
 .card-body{
-   box-shadow: 10px 7px 10px #091f43;
+   /* box-shadow: 10px 7px 10px #091f43; */
 }
 .titi_img{
   width: 50px; 

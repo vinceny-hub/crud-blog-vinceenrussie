@@ -3,7 +3,8 @@
 
   <div class="container-fluid">
     <div class="h-100 justify-content-center row-personnalised align-items-center">
-      <div class="col-md-8 gedf-main">
+      <!-- <div class="col-md-8 gedf-main"> -->
+        <div class="gedf-main">
         <div class="" v-if="!submitted">
           <div class="box-header-body-input">          
             <div class="card-body card-input">
@@ -510,6 +511,9 @@ export default {
 }
 .card-body{
    /* box-shadow: 10px 7px 10px #091f43; */
+   max-width: 900px;
+   margin-left: auto;
+   margin-right: auto;
 }
 .titi_img{
   width: 50px; 
